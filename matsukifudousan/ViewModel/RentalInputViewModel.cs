@@ -1,4 +1,5 @@
 ﻿using matsukifudousan.Model;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using Image = matsukifudousan.Model.Image;
 
 namespace matsukifudousan.ViewModel
@@ -122,10 +124,14 @@ namespace matsukifudousan.ViewModel
         public string Image { get => _Image; set { _Image = value; OnPropertyChanged(); } }
 
         #endregion
+
+        private Image _Image1;
+        public Image Image1 { get => _Image1; set { _Image1 = value; OnPropertyChanged(); } }
         public ICommand ContractDetailsCommandWD { get; set; }
 
         public ICommand AddRentalCommand { get; set; }
 
+        public ICommand AddImageCommand { get; set; }
 
         public RentalInputViewModel()
         {
@@ -201,6 +207,30 @@ namespace matsukifudousan.ViewModel
                 #endregion
             });
 
+            //AddImageCommand = new RelayCommand<object>((p) =>
+            //{
+            //    return true;
+            //}, (p) =>
+            //{
+            //    String imageLocation = "";
+            //    try
+            //    {
+            //        OpenFileDialog op = new OpenFileDialog();
+            //        op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +"JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +"Portable Network Graphic (*.png)|*.png";
+            //        if (op.ShowDialog() == true)
+            //        {
+            //            imageLocation = op.FileName;
+
+            //            Image1.Source = imageLocation;
+            //        }
+            //    }
+            //    catch (Exception)
+            //    {
+
+            //        MessageBox.Show("Fix!", "ERROR!!!", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    }
+               
+            //});
         }
 
     }

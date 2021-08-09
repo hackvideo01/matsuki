@@ -227,6 +227,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="images\RentalImage\" />
     <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>

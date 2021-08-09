@@ -24,7 +24,6 @@
         <Style TargetType="TextBlock" x:Key="Textblock">
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
             <Setter Property="FontSize" Value="20"></Setter>
-            <!--<Setter Property="FontWeight" Value="Bold"></Setter>-->
             <Setter Property="Margin" Value="10,0,0,0"></Setter>
         </Style>
         
@@ -87,6 +86,7 @@
                     <RowDefinition Height="42"></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
                     <RowDefinition Height="42"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Border Grid.Row="0" Style="{StaticResource ResourceKey=BorderGrid}">
@@ -481,13 +481,15 @@
                                 <ColumnDefinition Width="80*"></ColumnDefinition>
                                 <ColumnDefinition Width="20*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" Text="{Binding Image}"></TextBox>
-                            <Button Grid.Column="1" Command="{Binding AddRentalCommand}" Content="アップロード" Margin="0 0 5 0"></Button>
+                            <TextBox IsReadOnly="True" x:Name="imagetb" Grid.Column="0" Text="{Binding Image}"></TextBox>
+                            <Button Grid.Column="1" Command="{Binding AddImageCommand}" Content="アップロード" Margin="0 0 5 0" Click="Button_Click_1"></Button>
                         </Grid>
                     </Grid>
                 </Border>
 
-                <Button Grid.Row="22" Command="{Binding AddRentalCommand}" Content="登録" Width="150" Height="42"></Button>
+                <Image x:Name="image1" Grid.Row="22" Height="100"></Image>
+                
+                <Button Grid.Row="23" Command="{Binding AddRentalCommand}" Content="登録" Width="150" Height="42"></Button>
 
             </Grid>
         </ScrollViewer>
