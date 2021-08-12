@@ -9,5 +9,6 @@
     <viewmodel:RentalInputViewModel x:Key="RentalInputVM"></viewmodel:RentalInputViewModel>
 
     <viewmodel:ContractDetailsViewModel x:Key="ContractDetailsVM"></viewmodel:ContractDetailsViewModel>
+    
 
 </ResourceDictionary>

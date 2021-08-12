@@ -19,7 +19,7 @@ namespace matsukifudousan.ViewModel
 
         public ContractDetailsViewModel()
         {
-            ViewImg = new ObservableCollection<Image>(DataProvider.Ins.DB.Image.Where(x=>x.ID == 1));
+            ViewImg = new ObservableCollection<Image>(DataProvider.Ins.DB.Image.Where(x=>x.ImageId == 1));
 
         }
 

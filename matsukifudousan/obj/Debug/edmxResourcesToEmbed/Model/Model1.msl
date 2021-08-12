@@ -4,58 +4,60 @@
     <EntitySetMapping Name="Image">
       <EntityTypeMapping TypeName="matsukiModel.Image">
         <MappingFragment StoreEntitySet="Image">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="HouseNo" ColumnName="HouseNo" />
+          <ScalarProperty Name="ImageType" ColumnName="ImageType" />
           <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
-          <ScalarProperty Name="ImageData" ColumnName="ImageData" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Info1">
-      <EntityTypeMapping TypeName="matsukiModel.Info1">
-        <MappingFragment StoreEntitySet="Info1">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="companny" ColumnName="companny" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="ImageId" ColumnName="ImageId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RentalManagementDB">
       <EntityTypeMapping TypeName="matsukiModel.RentalManagementDB">
         <MappingFragment StoreEntitySet="RentalManagementDB">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="HouseNo" ColumnName="HouseNo" />
-          <ScalarProperty Name="HouseName" ColumnName="HouseName" />
-          <ScalarProperty Name="HousePost" ColumnName="HousePost" />
-          <ScalarProperty Name="HouseAddress" ColumnName="HouseAddress" />
-          <ScalarProperty Name="NearestSation" ColumnName="NearestSation" />
-          <ScalarProperty Name="HouseType" ColumnName="HouseType" />
-          <ScalarProperty Name="Construction" ColumnName="Construction" />
-          <ScalarProperty Name="YearConstruction" ColumnName="YearConstruction" />
-          <ScalarProperty Name="Decorate" ColumnName="Decorate" />
-          <ScalarProperty Name="TotalArea" ColumnName="TotalArea" />
-          <ScalarProperty Name="Parking" ColumnName="Parking" />
-          <ScalarProperty Name="Pets" ColumnName="Pets" />
-          <ScalarProperty Name="OtherEquipment" ColumnName="OtherEquipment" />
-          <ScalarProperty Name="HouseRemarks" ColumnName="HouseRemarks" />
-          <ScalarProperty Name="SecurityDeposit" ColumnName="SecurityDeposit" />
-          <ScalarProperty Name="KeyMoney" ColumnName="KeyMoney" />
-          <ScalarProperty Name="CommonFee" ColumnName="CommonFee" />
-          <ScalarProperty Name="ManagementFee" ColumnName="ManagementFee" />
-          <ScalarProperty Name="Rent" ColumnName="Rent" />
-          <ScalarProperty Name="ParkingFee" ColumnName="ParkingFee" />
-          <ScalarProperty Name="OtherFee" ColumnName="OtherFee" />
-          <ScalarProperty Name="MNGMTCOName" ColumnName="MNGMTCOName" />
-          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
-          <ScalarProperty Name="COPhone" ColumnName="COPhone" />
-          <ScalarProperty Name="COFax" ColumnName="COFax" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Fax" ColumnName="Fax" />
-          <ScalarProperty Name="MNGMTForm" ColumnName="MNGMTForm" />
-          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
           <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="MNGMTForm" ColumnName="MNGMTForm" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="COFax" ColumnName="COFax" />
+          <ScalarProperty Name="COPhone" ColumnName="COPhone" />
+          <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+          <ScalarProperty Name="MNGMTCOName" ColumnName="MNGMTCOName" />
+          <ScalarProperty Name="OtherFee" ColumnName="OtherFee" />
+          <ScalarProperty Name="ParkingFee" ColumnName="ParkingFee" />
+          <ScalarProperty Name="Rent" ColumnName="Rent" />
+          <ScalarProperty Name="ManagementFee" ColumnName="ManagementFee" />
+          <ScalarProperty Name="CommonFee" ColumnName="CommonFee" />
+          <ScalarProperty Name="KeyMoney" ColumnName="KeyMoney" />
+          <ScalarProperty Name="SecurityDeposit" ColumnName="SecurityDeposit" />
+          <ScalarProperty Name="HouseRemarks" ColumnName="HouseRemarks" />
+          <ScalarProperty Name="OtherEquipment" ColumnName="OtherEquipment" />
+          <ScalarProperty Name="Pets" ColumnName="Pets" />
+          <ScalarProperty Name="Parking" ColumnName="Parking" />
+          <ScalarProperty Name="TotalArea" ColumnName="TotalArea" />
+          <ScalarProperty Name="Decorate" ColumnName="Decorate" />
+          <ScalarProperty Name="YearConstruction" ColumnName="YearConstruction" />
+          <ScalarProperty Name="Construction" ColumnName="Construction" />
+          <ScalarProperty Name="HouseType" ColumnName="HouseType" />
+          <ScalarProperty Name="NearestSation" ColumnName="NearestSation" />
+          <ScalarProperty Name="HouseAddress" ColumnName="HouseAddress" />
+          <ScalarProperty Name="HousePost" ColumnName="HousePost" />
+          <ScalarProperty Name="HouseName" ColumnName="HouseName" />
+          <ScalarProperty Name="HouseNo" ColumnName="HouseNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="matsukiModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

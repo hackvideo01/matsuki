@@ -482,14 +482,26 @@
                                 <ColumnDefinition Width="20*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <TextBox IsReadOnly="True" x:Name="imagetb" Grid.Column="0" Text="{Binding Image}"></TextBox>
-                            <Button Grid.Column="1" Command="{Binding AddImageCommand}" Content="アップロード" Margin="0 0 5 0" Click="Button_Click_1"></Button>
+                            <TextBox x:Name="tbPath" Text="{Binding ImageFullPath}" Visibility="Hidden"></TextBox>
+                            <Button Grid.Column="1" Command="{Binding AddImageCommand}" Content="アップロード" Margin="0 0 5 0" ></Button>
+                            <!--Click="Button_Click_1"-->
                         </Grid>
                     </Grid>
                 </Border>
 
-                <Image x:Name="image1" Grid.Row="22" Height="100"></Image>
-                
+                <!--<Image x:Name="image1" Source="{Binding ImagePath}" Grid.Row="22" Height="100"></Image>-->
+                <ListView x:Name="listview" Grid.Row="22">
+                    <ListViewItem>
+                        <DataTemplate>
+                            <Grid>
+                                <Button Content="{Binding}"></Button>
+                            </Grid>
+                        </DataTemplate>
+                    </ListViewItem>
+                </ListView>
+
                 <Button Grid.Row="23" Command="{Binding AddRentalCommand}" Content="登録" Width="150" Height="42"></Button>
+                <!--Click="Button_Click"-->
 
             </Grid>
         </ScrollViewer>

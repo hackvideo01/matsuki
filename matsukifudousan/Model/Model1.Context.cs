@@ -26,7 +26,7 @@ namespace matsukifudousan.Model
         }
     
         public virtual DbSet<Image> Image { get; set; }
-        public virtual DbSet<Info1> Info1 { get; set; }
         public virtual DbSet<RentalManagementDB> RentalManagementDB { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

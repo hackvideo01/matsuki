@@ -15,10 +15,12 @@ namespace matsukifudousan.Model
 
     public partial class Image
     {
-        public int ID { get; set; }
+        public int ImageId { get; set; }
         public string ImageName { get; set; }
         public string ImagePath { get; set; }
-        public string ImageData { get; set; }
-        public BitmapImage Source { get; internal set; }
+        public string ImageType { get; set; }
+        public Nullable<int> HouseNo { get; set; }
+    
+        public virtual RentalManagementDB RentalManagementDB { get; set; }
     }
 }

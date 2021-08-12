@@ -2,33 +2,22 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Image = matsukifudousan.Model.Image;
-
 namespace matsukifudousan.ViewModel
 {
     public class RentalInputViewModel : BaseViewModel
     {
-        //private ObservableCollection<Image> _RentalInputList;
-        //public ObservableCollection<Image> RentalInputList
-        //{
-        //    get => _RentalInputList; set
-        //    {
-        //        _RentalInputList = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-
         #region Rental Item Input
-        private string _HouseNo;
-        public string HouseNo { get => _HouseNo; set { _HouseNo = value; OnPropertyChanged(); } }
+        private int _HouseNo;
+        public int HouseNo { get => _HouseNo; set { _HouseNo = value; OnPropertyChanged(); } }
 
         private string _HouseName;
         public string HouseName { get => _HouseName; set { _HouseName = value; OnPropertyChanged(); } }
@@ -125,25 +114,34 @@ namespace matsukifudousan.ViewModel
 
         #endregion
 
-        private Image _Image1;
-        public Image Image1 { get => _Image1; set { _Image1 = value; OnPropertyChanged(); } }
+        #region
+        private string _ImagePath;
+        public string ImagePath { get => _ImagePath; set { _ImagePath = value; OnPropertyChanged(); } }
+
+        private string _ImageFullPath;
+        public string ImageFullPath { get => _ImageFullPath; set { _ImageFullPath = value; OnPropertyChanged(); } }
+        #endregion
         public ICommand ContractDetailsCommandWD { get; set; }
 
         public ICommand AddRentalCommand { get; set; }
 
         public ICommand AddImageCommand { get; set; }
 
+        public string[] ImageObject;
+
+        public string[] ImageNameObject;
+
         public RentalInputViewModel()
         {
-
-            //RentalInputList = new ObservableCollection<Image>(DataProvider.Ins.DB.Image);
+            string[] a =ImageObject;
+            SessionVM SessionImgRental = new SessionVM();
 
             ContractDetailsCommandWD = new RelayCommand<object>((p) => { return true; }, (p) => { ContractDetails wd = new ContractDetails(); wd.ShowDialog(); });
 
 
             AddRentalCommand = new RelayCommand<object>((p) =>
             {
-                if (string.IsNullOrEmpty(HouseNo))
+                if (string.IsNullOrEmpty(HouseNo.ToString()))
                     return false;
 
                 var displayList = DataProvider.Ins.DB.RentalManagementDB.Where(x => x.HouseNo == HouseNo);
@@ -154,7 +152,6 @@ namespace matsukifudousan.ViewModel
             }, (p) =>
 
             {
-                //MessageBox.Show("Da vAo Roi");
                 int Comfirm = 0;
                 #region Value Form RentalMangement
                 var AddRental = new RentalManagementDB()
@@ -196,41 +193,130 @@ namespace matsukifudousan.ViewModel
                 DataProvider.Ins.DB.RentalManagementDB.Add(AddRental);
                 DataProvider.Ins.DB.SaveChanges();
 
+                foreach (string item in ImageNameObject)
+                {
+                    var AddImage = new Image()
+                    {
+                        ImageName = item,
+                        HouseNo = HouseNo
+                    };
+                    DataProvider.Ins.DB.Image.Add(AddImage);
+                    DataProvider.Ins.DB.SaveChanges();
+                }
                 Comfirm = 1;
                 if (Comfirm == 1)
                 {
-                    MessageBox.Show("データを保存しました。");
-                }
+                    String imageLocation = "";
+                    RentalInput imageSource = new RentalInput();
+                    OpenFileDialog op = new OpenFileDialog();
+                    op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" + "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" + "Portable Network Graphic (*.png)|*.png";
+                    imageLocation = op.FileName;
 
-                //RentalInputList.Add(AddRental);
+                    string appDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                  
+                    MessageBox.Show("データを保存しました。", "Comfirm", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                }
 
                 #endregion
             });
 
-            //AddImageCommand = new RelayCommand<object>((p) =>
-            //{
-            //    return true;
-            //}, (p) =>
-            //{
-            //    String imageLocation = "";
-            //    try
-            //    {
-            //        OpenFileDialog op = new OpenFileDialog();
-            //        op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +"JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +"Portable Network Graphic (*.png)|*.png";
-            //        if (op.ShowDialog() == true)
-            //        {
-            //            imageLocation = op.FileName;
+            AddImageCommand = new RelayCommand<object>((p) =>
+            {
+                return true;
+            }, (p) =>
+            {
+                String imageLocation = "";
+                try
+                {
+                duplicate:
 
-            //            Image1.Source = imageLocation;
-            //        }
-            //    }
-            //    catch (Exception)
-            //    {
+                    RentalInput imageSource = new RentalInput();
 
-            //        MessageBox.Show("Fix!", "ERROR!!!", MessageBoxButton.OK, MessageBoxImage.Error);
-            //    }
-               
-            //});
+                    OpenFileDialog op = new OpenFileDialog();
+
+
+                    op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" + "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" + "Portable Network Graphic (*.png)|*.png";
+
+                    op.Multiselect = true;
+
+                    List<string> ListImagePath = new List<string>();
+
+                    if (op.ShowDialog() == true)
+                    {
+                        //imageLocation = op.FileName;
+
+                        //ImagePath = imageLocation;
+
+                        //Image = op.SafeFileName;
+
+                        //imageSource.imagetb.Focus();
+
+                        //ImageFullPath = imageLocation;
+
+                        //var displayListImage = DataProvider.Ins.DB.RentalManagementDB.Where(x => x.Image == Image);
+                        //if (displayListImage == null || displayListImage.Count() != 0)
+                        //{
+                        //    //MessageBox.Show("DA CO ROI", "trung", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                        //    var result = MessageBox.Show("ファイル名がありました。この写真を保存しますか？", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                        //    if (result == MessageBoxResult.No)
+                        //    {
+                        //        //op.ShowDialog();
+                        //        goto duplicate;
+                        //    }
+
+                        //}
+                        //else
+                        //{
+                        //    //string appDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+                        //    //File.Copy(imageSource.tbPath.Text, System.IO.Path.Combine(appDirectory + "\\RentalImage", System.IO.Path.GetFileName(imageSource.tbPath.Text)), true);
+                        //}
+                        string conbineCharatar = ";";
+                        string appDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                        DrawingGroup imageDrawings = new DrawingGroup();
+
+
+                        foreach (String item in op.SafeFileNames)
+                        {
+                            var displayListImage = DataProvider.Ins.DB.Image.Where(x => x.ImageName == item);
+                            if (displayListImage == null || displayListImage.Count() != 0)
+                            {
+                                var result = MessageBox.Show("ファイル名がありました。この写真を保存しますか？", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                                if (result == MessageBoxResult.No)
+                                {
+                                    goto duplicate;
+                                }
+                            }
+                            else
+                            {
+                                Image += item + conbineCharatar;
+                                ImagePath = op.FileName;
+
+                                //imageSource.image1.Source = new BitmapImage(new Uri("images/computer.png", UriKind.Relative));
+                            }
+
+                        }
+                        ImageObject = op.FileNames;
+                        ImageNameObject = op.SafeFileNames;
+
+                        foreach (String SaveImageItem in ImageObject)
+                        {
+                            File.Copy(SaveImageItem, System.IO.Path.Combine(appDirectory + "\\RentalImage", System.IO.Path.GetFileName(SaveImageItem)), true);
+
+                        }
+                        
+
+                    }
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Fix!", "ERROR!!!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+            });
+
         }
 
     }

@@ -14,8 +14,13 @@ namespace matsukifudousan.Model
     
     public partial class RentalManagementDB
     {
-        public int Id { get; set; }
-        public string HouseNo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public RentalManagementDB()
+        {
+            this.Image1 = new HashSet<Image>();
+        }
+    
+        public int HouseNo { get; set; }
         public string HouseName { get; set; }
         public string HousePost { get; set; }
         public string HouseAddress { get; set; }
@@ -47,5 +52,8 @@ namespace matsukifudousan.Model
         public string MNGMTForm { get; set; }
         public string Remarks { get; set; }
         public string Image { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Image> Image1 { get; set; }
     }
 }

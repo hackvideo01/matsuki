@@ -25,55 +25,15 @@ namespace matsukifudousan
     /// </summary>
     public partial class RentalInput : UserControl
     {
+        List<string> data;
         public RentalInput()
         {
             InitializeComponent();
 
+            data = new List<string>() { "OK", "Free", "DA OK" };
+            listview.ItemsSource = data;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                OpenFileDialog op = new OpenFileDialog();
-                op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-                  "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-                  "Portable Network Graphic (*.png)|*.png";
 
-                if (op.ShowDialog() == true)
-                {
-                    string FilePath = op.FileName;
-
-                    image1.Source = new BitmapImage(new Uri(FilePath));
-
-                    //var ok = op.FilterIndex =2;
-
-                    imagetb.Text = op.SafeFileName;
-
-                    imagetb.Focus();
-
-                    //string name = System.IO.Path.GetFileName(FilePath);
-                    //string destinationPath = GetDestinationPath(name, "RentalImage");
-
-                    //File.Copy(FilePath, destinationPath, true);
-
-                   
-                }
-                
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Fix!", "ERROR!!!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        //private static String GetDestinationPath(string filename, string foldername)
-        //{
-        //    String appStartPath = System.IO.Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
-
-        //    appStartPath = String.Format(appStartPath + "\\{0}\\" + filename, foldername);
-        //    return appStartPath;
-        //}
     }
 }
