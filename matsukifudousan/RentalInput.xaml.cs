@@ -30,8 +30,9 @@ namespace matsukifudousan
         {
             InitializeComponent();
 
-            data = new List<string>() { "OK", "Free", "DA OK" };
-            listview.ItemsSource = data;
+            //data = new List<string>() { "OK", "DA OK","グエンルック" };
+            //listview.ItemsSource = data;
+            
         }
 
 

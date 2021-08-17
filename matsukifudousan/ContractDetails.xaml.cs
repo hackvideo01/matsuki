@@ -2,8 +2,11 @@
 using matsukifudousan.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,27 +24,16 @@ namespace matsukifudousan
     /// </summary>
     public partial class ContractDetails : Window
     {
-        private ContractDetailsViewModel _View;
-
+        //private ContractDetailsViewModel _View
         public ContractDetails()
         {
             InitializeComponent();
 
-            //IViewMain();
-
-            //ContractDetailsDisplay.DataContext = _View;
-
-            //ContractDetailsDisplay.DataContext = View;
-
-            //void IViewMain()
-            //{
-            //    var nameImg = DataProvider.Ins.DB.Image.Where(x => x.ID == 1);
-            //    if (nameImg.Count() > 0)
-            //    {
-            //        _View = new ContractDetailsViewModel() { ObjectImg = DataProvider.Ins.DB.Image.Where(x=>x.ID == 1).ToList() };
-            //    }
-            //}
         }
-        
+
+        private void DatePicker_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }
