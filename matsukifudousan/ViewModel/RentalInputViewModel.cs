@@ -16,8 +16,8 @@ namespace matsukifudousan.ViewModel
     public class RentalInputViewModel : BaseViewModel
     {
         #region Rental Item Input
-        private int _HouseNo;
-        public int HouseNo { get => _HouseNo; set { _HouseNo = value; OnPropertyChanged(); } }
+        private string _HouseNo;
+        public string HouseNo { get => _HouseNo; set { _HouseNo = value; OnPropertyChanged(); } }
 
         private string _HouseName;
         public string HouseName { get => _HouseName; set { _HouseName = value; OnPropertyChanged(); } }
@@ -136,12 +136,14 @@ namespace matsukifudousan.ViewModel
             string[] a =ImageObject;
             SessionVM SessionImgRental = new SessionVM();
 
+
+
             ContractDetailsCommandWD = new RelayCommand<object>((p) => { return true; }, (p) => { ContractDetails wd = new ContractDetails(); wd.ShowDialog(); });
 
 
             AddRentalCommand = new RelayCommand<object>((p) =>
             {
-                if (string.IsNullOrEmpty(HouseNo.ToString()))
+                if (string.IsNullOrEmpty(HouseNo))
                     return false;
 
                 var displayList = DataProvider.Ins.DB.RentalManagementDB.Where(x => x.HouseNo == HouseNo);

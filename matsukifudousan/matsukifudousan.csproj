@@ -109,9 +109,6 @@
     <Compile Include="Model\RentalManagementDB.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Prints.xaml.cs">
       <DependentUpon>Prints.xaml</DependentUpon>
     </Compile>
@@ -135,6 +132,7 @@
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RentalInputViewModel.cs" />
+    <Compile Include="ViewModel\RentalSearchModel.cs" />
     <Compile Include="ViewModel\SessionVM.cs" />
     <Page Include="ContractDetails.xaml">
       <SubType>Designer</SubType>

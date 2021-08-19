@@ -11,15 +11,14 @@ namespace matsukifudousan.Model
 {
     using System;
     using System.Collections.Generic;
-    using System.Windows.Media.Imaging;
-
+    
     public partial class Image
     {
         public int ImageId { get; set; }
         public string ImageName { get; set; }
         public string ImagePath { get; set; }
         public string ImageType { get; set; }
-        public Nullable<int> HouseNo { get; set; }
+        public string HouseNo { get; set; }
     
         public virtual RentalManagementDB RentalManagementDB { get; set; }
     }

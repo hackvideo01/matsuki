@@ -21,6 +21,8 @@
         
         DataContext="{StaticResource ContractDetailsVM}"
         
+        Loaded="ContractVM_Loaded"
+        
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         WindowStyle="None"
@@ -55,6 +57,17 @@
             <Setter Property="BorderThickness" Value="1"></Setter>
             <Setter Property="BorderBrush" Value="Gray"></Setter>
             <Setter Property="Margin" Value="0,3,0,0"></Setter>
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="TextBoxMargin">
+            <Setter Property="Margin" Value="0 3 0 0"/>
+            <Setter Property="FontSize" Value="19"/>
+        </Style>
+
+        <Style TargetType="DatePicker" x:Key="DatePickerMF">
+            <Setter Property="Margin" Value="9 3 0 0"/>
+            <Setter Property="FontSize" Value="19"/>
+            <Setter Property="BorderThickness" Value="0"/>
         </Style>
     </Window.Resources>    
     
@@ -187,7 +200,7 @@
                                 <TextBlock Text="契約の種類" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="契約の種類" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="契約の種類" Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -202,7 +215,7 @@
                                 <TextBlock Text="取引態様" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="取引態様" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="取引態様" Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -217,7 +230,7 @@
                                 <TextBlock Text="今日日付" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBlock Text="{Binding CurrentDate}" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
+                                <TextBlock Text="{Binding CurrentDate}" Style="{StaticResource ResourceKey=Textblock}" FontSize="19"></TextBlock>
                             </Grid>
                         </Grid>
                     </Border>
@@ -232,22 +245,7 @@
                                 <TextBlock Text="契約日" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <DatePicker x:Name="DatePickerSet" >
-                                    <DatePicker.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Blue" Offset="0.1" />
-                                            <GradientStop Color="Orange" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="0.75" />
-                                            <GradientStop Color="Red" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Background>
-                                    <DatePicker.Foreground>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Black" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Foreground>
-                                </DatePicker>
+                                <DatePicker Style="{StaticResource ResourceKey=DatePickerMF}"></DatePicker>
                             </Grid>
                         </Grid>
                     </Border>
@@ -262,22 +260,7 @@
                                 <TextBlock Text="契約の始期" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <DatePicker>
-                                    <DatePicker.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Blue" Offset="0.1" />
-                                            <GradientStop Color="Orange" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="0.75" />
-                                            <GradientStop Color="Red" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Background>
-                                    <DatePicker.Foreground>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Black" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Foreground>
-                                </DatePicker>
+                                <DatePicker Style="{StaticResource ResourceKey=DatePickerMF}"></DatePicker>
                             </Grid>
                         </Grid>
                     </Border>
@@ -292,22 +275,7 @@
                                 <TextBlock Text="契約の終期" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <DatePicker>
-                                    <DatePicker.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Blue" Offset="0.1" />
-                                            <GradientStop Color="Orange" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="0.75" />
-                                            <GradientStop Color="Red" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Background>
-                                    <DatePicker.Foreground>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Black" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Foreground>
-                                </DatePicker>
+                                <DatePicker Style="{StaticResource ResourceKey=DatePickerMF}"></DatePicker>
                             </Grid>
                         </Grid>
                     </Border>
@@ -322,22 +290,7 @@
                                 <TextBlock Text="始期月の日数" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <DatePicker>
-                                    <DatePicker.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Blue" Offset="0.1" />
-                                            <GradientStop Color="Orange" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="0.75" />
-                                            <GradientStop Color="Red" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Background>
-                                    <DatePicker.Foreground>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Black" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Foreground>
-                                </DatePicker>
+                                <DatePicker Style="{StaticResource ResourceKey=DatePickerMF}"></DatePicker>
                             </Grid>
                         </Grid>
                     </Border>
@@ -352,7 +305,7 @@
                                 <TextBlock Text="所有者氏名" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="所有者氏名" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="所有者氏名"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -367,22 +320,7 @@
                                 <TextBlock Text="所有者生年月日" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <DatePicker>
-                                    <DatePicker.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Blue" Offset="0.1" />
-                                            <GradientStop Color="Orange" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="0.75" />
-                                            <GradientStop Color="Red" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Background>
-                                    <DatePicker.Foreground>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Black" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Foreground>
-                                </DatePicker>
+                                <DatePicker Style="{StaticResource ResourceKey=DatePickerMF}"></DatePicker>
                             </Grid>
                         </Grid>
                     </Border>
@@ -397,7 +335,7 @@
                                 <TextBlock Text="所有者住所" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="所有者住所" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="所有者住所"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -412,7 +350,7 @@
                                 <TextBlock Text="所有者〒" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="所有者〒" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="所有者〒"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -427,7 +365,7 @@
                                 <TextBlock Text="所有者電話" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="所有者電話" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="所有者電話"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -442,7 +380,7 @@
                                 <TextBlock Text="賃貸人氏名" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="賃貸人氏名" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="賃貸人氏名" Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -457,22 +395,7 @@
                                 <TextBlock Text="賃貸人生年月日" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <DatePicker>
-                                    <DatePicker.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Blue" Offset="0.1" />
-                                            <GradientStop Color="Orange" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="0.75" />
-                                            <GradientStop Color="Red" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Background>
-                                    <DatePicker.Foreground>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Black" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Foreground>
-                                </DatePicker>
+                                <DatePicker Style="{StaticResource ResourceKey=DatePickerMF}"></DatePicker>
                             </Grid>
                         </Grid>
                     </Border>
@@ -487,7 +410,7 @@
                                 <TextBlock Text="賃貸人住所" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="賃貸人住所" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="賃貸人住所"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -502,7 +425,7 @@
                                 <TextBlock Text="賃貸人〒" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="賃貸人〒" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="賃貸人〒"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -517,7 +440,7 @@
                                 <TextBlock Text="賃貸人電話" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="賃貸人電話" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="賃貸人電話"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -532,7 +455,7 @@
                                 <TextBlock Text="賃借人氏名" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="賃借人氏名" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="賃借人氏名"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -547,22 +470,7 @@
                                 <TextBlock Text="賃借人生年月日" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <DatePicker>
-                                    <DatePicker.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Blue" Offset="0.1" />
-                                            <GradientStop Color="Orange" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="0.75" />
-                                            <GradientStop Color="Red" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Background>
-                                    <DatePicker.Foreground>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Black" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Foreground>
-                                </DatePicker>
+                                <DatePicker Style="{StaticResource ResourceKey=DatePickerMF}"></DatePicker>
                             </Grid>
                         </Grid>
                     </Border>
@@ -577,7 +485,7 @@
                                 <TextBlock Text="賃借人住所" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="賃借人住所" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="賃借人住所"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -592,7 +500,7 @@
                                 <TextBlock Text="賃借人電話" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="賃借人電話" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="賃借人電話"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -607,7 +515,7 @@
                                 <TextBlock Text="入居者氏名" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="入居者氏名" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="入居者氏名"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -622,22 +530,7 @@
                                 <TextBlock Text="入居者生年月日" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <DatePicker>
-                                    <DatePicker.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Blue" Offset="0.1" />
-                                            <GradientStop Color="Orange" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="0.75" />
-                                            <GradientStop Color="Red" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Background>
-                                    <DatePicker.Foreground>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Black" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Foreground>
-                                </DatePicker>
+                                <DatePicker Style="{StaticResource ResourceKey=DatePickerMF}"></DatePicker>
                             </Grid>
                         </Grid>
                     </Border>
@@ -652,7 +545,7 @@
                                 <TextBlock Text="入居者氏名" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="入居者氏名" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="入居者氏名"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -667,22 +560,7 @@
                                 <TextBlock Text="入居者生年月日" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <DatePicker>
-                                    <DatePicker.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Blue" Offset="0.1" />
-                                            <GradientStop Color="Orange" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="0.75" />
-                                            <GradientStop Color="Red" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Background>
-                                    <DatePicker.Foreground>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Black" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Foreground>
-                                </DatePicker>
+                                <DatePicker Style="{StaticResource ResourceKey=DatePickerMF}"></DatePicker>
                             </Grid>
                         </Grid>
                     </Border>
@@ -697,7 +575,7 @@
                                 <TextBlock Text="入居者氏名" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="入居者氏名" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="入居者氏名"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -712,22 +590,7 @@
                                 <TextBlock Text="入居者生年月日" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <DatePicker>
-                                    <DatePicker.Background>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Blue" Offset="0.1" />
-                                            <GradientStop Color="Orange" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="0.75" />
-                                            <GradientStop Color="Red" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Background>
-                                    <DatePicker.Foreground>
-                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                            <GradientStop Color="Black" Offset="0.25" />
-                                            <GradientStop Color="Green" Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </DatePicker.Foreground>
-                                </DatePicker>
+                                <DatePicker Style="{StaticResource ResourceKey=DatePickerMF}"></DatePicker>
                             </Grid>
                         </Grid>
                     </Border>
@@ -743,7 +606,7 @@
                                 <TextBlock Text="所在地" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="所在地" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="所在地"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -758,7 +621,7 @@
                                 <TextBlock Text="名称" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="名称" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="名称"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -773,7 +636,7 @@
                                 <TextBlock Text="号室" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="号室" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="号室"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -788,7 +651,7 @@
                                 <TextBlock Text="家屋番号" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="家屋番号" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="家屋番号"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -803,7 +666,7 @@
                                 <TextBlock Text="種類" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="種類" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="種類"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -818,7 +681,7 @@
                                 <TextBlock Text="構造" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="構造" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="構造"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -833,7 +696,7 @@
                                 <TextBlock Text="外壁" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="外壁" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="外壁"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -848,7 +711,7 @@
                                 <TextBlock Text="間取" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="間取" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="間取"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -863,7 +726,7 @@
                                 <TextBlock Text="間取" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="間取" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="間取"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -878,7 +741,7 @@
                                 <TextBlock Text="駐車場有無" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <ComboBox x:Name="Parking" Style="{StaticResource ResourceKey=MaterialDesignComboBox}" ItemsSource="{Binding ParkingChoose}"></ComboBox>
+                                <ComboBox x:Name="Parking" Style="{StaticResource ResourceKey=MaterialDesignComboBox}" ItemsSource="{Binding Choose}"></ComboBox>
                             </Grid>
                         </Grid>
                     </Border>
@@ -893,7 +756,11 @@
                                 <TextBlock Text="駐車場の形態" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBlock Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
+                                <ComboBox x:Name="ParkingChoose" Style="{StaticResource ResourceKey=MaterialDesignComboBox}">
+                                    <TextBlock Text="砂利"/>
+                                    <TextBlock Text="アスファルト"/>
+                                    <TextBlock Text="コンクリート"/>
+                                </ComboBox>
                             </Grid>
                         </Grid>
                     </Border>
@@ -908,7 +775,7 @@
                                 <TextBlock Text="入居時使用可能数" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBlock Text="" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
+                                <TextBox Text="長さ　" Style="{StaticResource ResourceKey=MaterialDesignComboBoxEditableTextBox}"></TextBox>
                             </Grid>
                         </Grid>
                     </Border>
@@ -938,7 +805,7 @@
                                 <TextBlock Text="電気" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <ComboBox Style="{StaticResource ResourceKey=MaterialDesignComboBox}" ItemsSource="{Binding ParkingChoose}"></ComboBox>
+                                <ComboBox x:Name="Electronic" Style="{StaticResource ResourceKey=MaterialDesignComboBox}" ItemsSource="{Binding Choose}" SelectedValue="{Binding Electronic, Mode=TwoWay}"></ComboBox>
                             </Grid>
                         </Grid>
                     </Border>
@@ -953,7 +820,7 @@
                                 <TextBlock Text="現在の供給会社" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBlock Text="" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
+                                <TextBox Text="東京電力エナジーパトナー㈱"  Margin="9 3 0 0" FontSize="19"></TextBox>
                             </Grid>
                         </Grid>
                     </Border>
@@ -968,7 +835,11 @@
                                 <TextBlock Text="ガス" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <ComboBox Style="{StaticResource ResourceKey=MaterialDesignComboBox}" ItemsSource="{Binding ParkingChoose}"></ComboBox>
+                                <!--<Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20*"></ColumnDefinition>
+                                    <ColumnDefinition Width="80*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>-->
+                                <ComboBox x:Name="gas" Style="{StaticResource ResourceKey=MaterialDesignComboBox}" ItemsSource="{Binding Choose}"></ComboBox>
                             </Grid>
                         </Grid>
                     </Border>
@@ -983,7 +854,11 @@
                                 <TextBlock Text="ガスの種類" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBlock Text="" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
+                                <ComboBox x:Name="gaschoose" Style="{StaticResource ResourceKey=MaterialDesignComboBox}">
+                                    <TextBlock Text="都市ガス"></TextBlock>
+                                    <TextBlock Text="LPG"></TextBlock>
+                                    <TextBlock Text="供給会社"></TextBlock>
+                                </ComboBox>
                             </Grid>
                         </Grid>
                     </Border>
@@ -998,7 +873,7 @@
                                 <TextBlock Text="供給会社" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBlock Text="" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
+                                <TextBox Text=""  Margin="9 3 0 0" FontSize="19"></TextBox>
                             </Grid>
                         </Grid>
                     </Border>
@@ -1013,7 +888,16 @@
                                 <TextBlock Text="水道" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <ComboBox Style="{StaticResource ResourceKey=MaterialDesignComboBox}" ItemsSource="{Binding Choose}"></ComboBox>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20*"></ColumnDefinition>
+                                    <ColumnDefinition Width="80*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <ComboBox x:Name="WaterService" Grid.Column="0" Style="{StaticResource ResourceKey=MaterialDesignComboBox}" ItemsSource="{Binding Choose}"></ComboBox>
+                                <ComboBox x:Name="WaterServiceChoose" Grid.Column="1" Style="{StaticResource ResourceKey=MaterialDesignComboBox}">
+                                    <TextBlock Text="公共"></TextBlock>
+                                    <TextBlock Text="簡易水道"></TextBlock>
+                                    <TextBlock Text="井戸"></TextBlock>
+                                </ComboBox>
                             </Grid>
                         </Grid>
                     </Border>
@@ -1028,7 +912,14 @@
                                 <TextBlock Text="受水槽" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <ComboBox Style="{StaticResource ResourceKey=MaterialDesignComboBox}" ItemsSource="{Binding Choose}"></ComboBox>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20*"></ColumnDefinition>
+                                    <ColumnDefinition Width="80*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <ComboBox x:Name="WaterTank" Grid.Column="0" Style="{StaticResource ResourceKey=MaterialDesignComboBox}" ItemsSource="{Binding Choose}"></ComboBox>
+                                <ComboBox x:Name="WaterTankChoose" Grid.Column="1" Style="{StaticResource ResourceKey=MaterialDesignComboBox}">
+                                    <TextBlock Text="ポンプ付き"></TextBlock>
+                                </ComboBox>
                             </Grid>
                         </Grid>
                     </Border>
@@ -1043,7 +934,17 @@
                                 <TextBlock Text="トイレ" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <ComboBox Style="{StaticResource ResourceKey=MaterialDesignComboBox}" ItemsSource="{Binding Choose}"></ComboBox>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20*"></ColumnDefinition>
+                                    <ColumnDefinition Width="80*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <ComboBox x:Name="Toilet" Grid.Column="0" Style="{StaticResource ResourceKey=MaterialDesignComboBox}" ItemsSource="{Binding Choose}"></ComboBox>
+                                <ComboBox x:Name="ToiletChoose" Grid.Column="1" Style="{StaticResource ResourceKey=MaterialDesignComboBox}">
+                                    <TextBlock Text="水洗"></TextBlock>
+                                    <TextBlock Text="汲み取り"></TextBlock>
+                                    <TextBlock Text="洋式"></TextBlock>
+                                    <TextBlock Text="和式"></TextBlock>
+                                </ComboBox>
                             </Grid>
                         </Grid>
                     </Border>
@@ -1733,7 +1634,7 @@
                                 <TextBlock Text="当月の家賃" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="当月の家賃" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="当月の家賃"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -1748,7 +1649,7 @@
                                 <TextBlock Text="当月の共益費" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="当月の共益費" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="当月の共益費"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -1763,7 +1664,7 @@
                                 <TextBlock Text="当月のCATV費" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="当月のCATV費" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="当月のCATV費"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -1778,7 +1679,7 @@
                                 <TextBlock Text="当月の駐車料" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="当月の駐車料" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="当月の駐車料"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -1793,7 +1694,7 @@
                                 <TextBlock Text="賃料等翌月分" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="賃料等翌月分" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="賃料等翌月分"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -1808,7 +1709,7 @@
                                 <TextBlock Text="借家賠保険料" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="借家賠保険料" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="借家賠保険料"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -1823,7 +1724,7 @@
                                 <TextBlock Text="賃貸保証料" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="賃貸保証料" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="賃貸保証料"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -1838,7 +1739,7 @@
                                 <TextBlock Text="手数料税込" Style="{StaticResource ResourceKey=Textblock}"></TextBlock>
                             </Border>
                             <Grid Grid.Column="1">
-                                <TextBox Text="{Binding HouseNo}" materialDesign:HintAssist.Hint="手数料税込" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                                <TextBox materialDesign:HintAssist.Hint="手数料税込"  Margin="9 3 0 0" FontSize="19"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -1858,7 +1759,7 @@
                         </Grid>
                     </Border>
 
-                    <Button Grid.Row="102" Content="登録" Width="150" Height="42"></Button>
+                    <!--<Button Command="{Binding AddRentalCommand}" Grid.Row="102" Content="登録" Width="150" Height="42"></Button>-->
 
                 </Grid>
             </ScrollViewer>

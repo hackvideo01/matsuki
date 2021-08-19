@@ -3,7 +3,6 @@
   <EntityContainer Name="matsukiEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Image" EntityType="matsukiModel.Image" />
     <EntitySet Name="RentalManagementDB" EntityType="matsukiModel.RentalManagementDB" />
-    <EntitySet Name="sysdiagrams" EntityType="matsukiModel.sysdiagrams" />
     <AssociationSet Name="FK__Image__HouseNo__7C4F7684" Association="matsukiModel.FK__Image__HouseNo__7C4F7684">
       <End Role="RentalManagementDB" EntitySet="RentalManagementDB" />
       <End Role="Image" EntitySet="Image" />
@@ -17,14 +16,14 @@
     <Property Name="ImageName" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
     <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ImageType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="HouseNo" Type="Int32" />
+    <Property Name="HouseNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="RentalManagementDB" Relationship="matsukiModel.FK__Image__HouseNo__7C4F7684" FromRole="Image" ToRole="RentalManagementDB" />
   </EntityType>
   <EntityType Name="RentalManagementDB">
     <Key>
       <PropertyRef Name="HouseNo" />
     </Key>
-    <Property Name="HouseNo" Type="Int32" Nullable="false" />
+    <Property Name="HouseNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="HouseName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="HousePost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="HouseAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -57,16 +56,6 @@
     <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
     <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Image1" Relationship="matsukiModel.FK__Image__HouseNo__7C4F7684" FromRole="RentalManagementDB" ToRole="Image" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="FK__Image__HouseNo__7C4F7684">
     <End Type="matsukiModel.RentalManagementDB" Role="RentalManagementDB" Multiplicity="0..1" />

@@ -23,7 +23,7 @@
              Tag="賃貸管理"
              Name="RentalMN">
     <UserControl.Resources>
-        <Style x:Key="BorderedItem" TargetType="ListViewItem">
+        <!--<Style x:Key="BorderedItem" TargetType="ListViewItem">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListViewItem">
@@ -38,13 +38,13 @@
                     <Setter Property="Cursor" Value="Hand" />
                 </Trigger>
             </Style.Triggers>
-        </Style>
+        </Style>-->
 
         <Style x:Key="wdButton" TargetType="Button">
             <Setter Property="FontWeight" Value="Normal"></Setter>
             <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
             <Setter Property="Height" Value="45"></Setter>
-            <Setter Property="Width" Value="140"></Setter>
+            <Setter Property="Width" Value="135"></Setter>
             <Setter Property="Foreground" Value="White"></Setter>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Padding" Value="9 0 0 0"/>
@@ -58,21 +58,20 @@
             </Style.Triggers>
         </Style>
         
+        <Style x:Key="ListViewItemStyle1" TargetType="{x:Type ListViewItem}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" Value="LightGreen" />
+                <Setter Property="Foreground" Value="Blue" />
+                <Setter Property="Cursor" Value="Hand" />
+                </Trigger>
+            <Trigger Property="IsSelected" Value="true">
+                <Setter Property="Background" Value="LightCoral" />
+                <Setter Property="Foreground" Value="White" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     </UserControl.Resources>
-
-    <!--<UserControl.Triggers>
-        <EventTrigger SourceName="BGChange" RoutedEvent="StackPanel.MouseEnter">
-            <BeginStoryboard >
-                <Storyboard Storyboard.TargetName="BGChange">
-                    <ColorAnimation Duration="0:0:.5" To="Black"
-                        Storyboard.TargetProperty="Background.Color">
-                    </ColorAnimation>
-                </Storyboard>
-            </BeginStoryboard>
-        </EventTrigger>
-        
-    </UserControl.Triggers>-->
-  
 
     <Grid>
         <Grid.RowDefinitions>
@@ -94,34 +93,39 @@
             <StackPanel Grid.Column="0" HorizontalAlignment="Left">
                 <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListView_SelectionChanged" SelectedItem="{}">
 
-                    <ListViewItem x:Name="Menu" Style="{StaticResource ResourceKey=BorderedItem}" Margin="0,15,0,0">
-                        <StackPanel Background="#1294F4" Orientation="Horizontal" Margin="10 0">
+                    <ListViewItem x:Name="Menu" Style="{StaticResource ResourceKey=ListViewItemStyle1}" Margin="0,15,0,0">
+                        <StackPanel Background="#1294F4" Orientation="Horizontal" Margin="10 0" Width="135">
                             <TextBlock Text="メニューへ" Margin="10" Foreground="White" FontSize="20"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="RentalInput" Style="{StaticResource ResourceKey=BorderedItem}">
-                        <StackPanel x:Name="RentalInputBGChange" Background="#1294F4" Orientation="Horizontal" Margin="10 0">
+                    <ListViewItem x:Name="RentalInput" Style="{StaticResource ResourceKey=ListViewItemStyle1}">
+                        <StackPanel x:Name="RentalInputBGChange" Background="#1294F4" Orientation="Horizontal" Margin="10 0" Width="135">
                             <TextBlock Text="賃貸物件入力" Margin="10" Foreground="White" FontSize="20"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="RentalSearch" Style="{StaticResource ResourceKey=BorderedItem}">
-                        <StackPanel x:Name="RentalSearchBGChange" Background="#1294F4" Orientation="Horizontal" Margin="10 0">
+                    <ListViewItem x:Name="RentalSearch" Style="{StaticResource ResourceKey=ListViewItemStyle1}">
+                        <StackPanel x:Name="RentalSearchBGChange" Background="#1294F4" Orientation="Horizontal" Margin="10 0" Width="135">
                             <TextBlock Text="賃貸物件検索" Margin="10" Foreground="White" FontSize="20"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="DepositBusiness" Style="{StaticResource ResourceKey=BorderedItem}">
-                        <StackPanel x:Name="DepositBusinessBGChange" Background="#1294F4" Orientation="Horizontal" Margin="10 0">
+                    <ListViewItem x:Name="DepositBusiness" Style="{StaticResource ResourceKey=ListViewItemStyle1}">
+                        <StackPanel x:Name="DepositBusinessBGChange" Background="#1294F4" Orientation="Horizontal" Margin="10 0" Width="135">
                             <TextBlock Text="入金管理" Margin="10" Foreground="White" FontSize="20"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="Prints" Style="{StaticResource ResourceKey=BorderedItem}">
-                        <StackPanel x:Name="PrintsSearchBGChange" Background="#1294F4" Orientation="Horizontal" Margin="10 0">
+                    <ListViewItem x:Name="Prints" Style="{StaticResource ResourceKey=ListViewItemStyle1}">
+                        <StackPanel x:Name="PrintsSearchBGChange" Background="#1294F4" Orientation="Horizontal" Margin="10 0" Width="135">
                             <TextBlock Text="各種印刷" Margin="10" Foreground="White" FontSize="20"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="wd" Style="{StaticResource ResourceKey=ListViewItemStyle1}">
+                        <StackPanel Background="#1294F4" Orientation="Horizontal" Margin="10 0" Width="135">
+                            <Button Command="{Binding ContractDetailsCommandWD}" Content="詳細入力" Style="{StaticResource ResourceKey=wdButton}"></Button>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
                 
-                <Button Command="{Binding ContractDetailsCommandWD}" Content="詳細入力" Style="{StaticResource ResourceKey=wdButton}"></Button>
+                <!--<Button Command="{Binding ContractDetailsCommandWD}" Content="詳細入力" Style="{StaticResource ResourceKey=wdButton}"></Button>-->
                 
             </StackPanel>
             

@@ -15,7 +15,6 @@ namespace matsukifudousan.ViewModel
         {
             //MessageBox.Show("Da vAo Roi");
             //Rentalmanagement = new RelayCommand<object>((p) => { return true; }, (p) => { UnitWindow wd = new UnitWindow(); wd.ShowDialog(); });
-
         }
     }
 }

@@ -25,14 +25,10 @@ namespace matsukifudousan
     /// </summary>
     public partial class RentalInput : UserControl
     {
-        List<string> data;
         public RentalInput()
         {
             InitializeComponent();
 
-            //data = new List<string>() { "OK", "DA OK","グエンルック" };
-            //listview.ItemsSource = data;
-            
         }
 
 

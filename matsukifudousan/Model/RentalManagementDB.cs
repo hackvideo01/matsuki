@@ -20,7 +20,7 @@ namespace matsukifudousan.Model
             this.Image1 = new HashSet<Image>();
         }
     
-        public int HouseNo { get; set; }
+        public string HouseNo { get; set; }
         public string HouseName { get; set; }
         public string HousePost { get; set; }
         public string HouseAddress { get; set; }

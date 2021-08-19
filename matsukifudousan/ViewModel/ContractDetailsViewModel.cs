@@ -5,6 +5,15 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Win32;
+using System.Drawing;
+using System.IO;
+using System.Windows;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using Image = matsukifudousan.Model.Image;
 
 namespace matsukifudousan.ViewModel
 {
@@ -12,14 +21,15 @@ namespace matsukifudousan.ViewModel
     public class ContractDetailsViewModel : BaseViewModel
 
     {
+        #region initi
         private ObservableCollection<Image> _ViewImg;
         public ObservableCollection<Image> ViewImg { get => _ViewImg; set { _ViewImg = value; OnPropertyChanged(); } }
 
         private string _CurrentDate;
         public string CurrentDate { get => _CurrentDate; set { _CurrentDate = value; OnPropertyChanged(); } }
 
-        private ObservableCollection<RentalManagementDB> _Rental;
-        public ObservableCollection<RentalManagementDB> Rental { get => _Rental; set { _Rental = value; OnPropertyChanged(); } }
+        //private ObservableCollection<RentalManagementDB> _Rental;
+        //public ObservableCollection<RentalManagementDB> Rental { get => _Rental; set { _Rental = value; OnPropertyChanged(); } }
 
         private string _Rent;
         public string Rent { get => _Rent; set { _Rent = value; OnPropertyChanged(); } }
@@ -44,22 +54,23 @@ namespace matsukifudousan.ViewModel
 
         private object _Choose2;
         public object Choose2 { get => _Choose2; set { _Choose2 = value; OnPropertyChanged(); } }
+        #endregion
 
-        //public ObservableCollection<string> ParkingChoose { get; private set; }
+        private string _Electronic;
+        public string Electronic { get => _Electronic; set { _Electronic = value; OnPropertyChanged(); } }
         public ContractDetailsViewModel()
         {
             DateTime today = DateTime.Today;
 
-            CurrentDate = DateTime.Now.ToString("yyyy-MM-dd");
+            CurrentDate = DateTime.Now.ToString("yyyy/MM/dd");
 
-            //Rental = new ObservableCollection<RentalManagementDB>(DataProvider.Ins.DB.RentalManagementDB.Where(x => x.HouseNo == 1));
 
-            Parking = DataProvider.Ins.DB.RentalManagementDB.Where(o => o.HouseNo == 1).First().Parking;
-            Rent = DataProvider.Ins.DB.RentalManagementDB.Where(o => o.HouseNo == 1).First().Rent;
-            CommonFee = DataProvider.Ins.DB.RentalManagementDB.Where(o => o.HouseNo == 1).First().CommonFee;
-            ParkingFee = DataProvider.Ins.DB.RentalManagementDB.Where(o => o.HouseNo == 1).First().ParkingFee;
-            SecurityDeposit = DataProvider.Ins.DB.RentalManagementDB.Where(o => o.HouseNo == 1).First().SecurityDeposit;
-            KeyMoney = DataProvider.Ins.DB.RentalManagementDB.Where(o => o.HouseNo == 1).First().KeyMoney;
+            Parking = DataProvider.Ins.DB.RentalManagementDB.Where(o => o.HouseNo == "1").First().Parking;
+            Rent = DataProvider.Ins.DB.RentalManagementDB.Where(o => o.HouseNo == "1").First().Rent;
+            CommonFee = DataProvider.Ins.DB.RentalManagementDB.Where(o => o.HouseNo == "1").First().CommonFee;
+            ParkingFee = DataProvider.Ins.DB.RentalManagementDB.Where(o => o.HouseNo == "1").First().ParkingFee;
+            SecurityDeposit = DataProvider.Ins.DB.RentalManagementDB.Where(o => o.HouseNo == "1").First().SecurityDeposit;
+            KeyMoney = DataProvider.Ins.DB.RentalManagementDB.Where(o => o.HouseNo == "1").First().KeyMoney;
 
             Choose = new ObservableCollection<string>
                 {
@@ -73,9 +84,8 @@ namespace matsukifudousan.ViewModel
                     "可"
                 };
 
-            //ViewImg = new ObservableCollection<Image>(DataProvider.Ins.DB.Image.Where(x=>x.HouseNo == 1));
-
         }
 
+        
     }
 }
