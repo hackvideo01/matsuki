@@ -12,4 +12,6 @@
 
     <viewmodel:RentalSearchModel x:Key="RentalSearchVM"></viewmodel:RentalSearchModel>
 
+    <viewmodel:RentalDetailsViewViewModel x:Key="RentalDetailsViewVM"></viewmodel:RentalDetailsViewViewModel>
+
 </ResourceDictionary>
