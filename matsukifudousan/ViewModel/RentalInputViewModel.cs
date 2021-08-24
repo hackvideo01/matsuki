@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Image = matsukifudousan.Model.Image;
+using ImageDB = matsukifudousan.Model.Image;
 namespace matsukifudousan.ViewModel
 {
     public class RentalInputViewModel : BaseViewModel
@@ -114,6 +115,11 @@ namespace matsukifudousan.ViewModel
 
         #endregion
 
+        private object _NameIMG;
+        public object NameIMG { get => _NameIMG; set { _NameIMG = value; OnPropertyChanged(); } }
+
+        private object _NameIMGSection;
+        public object NameIMGSection { get => _NameIMGSection; set { _NameIMGSection = value; OnPropertyChanged(); } }
         #region
         private string _ImagePath;
         public string ImagePath { get => _ImagePath; set { _ImagePath = value; OnPropertyChanged(); } }
@@ -131,6 +137,18 @@ namespace matsukifudousan.ViewModel
 
         public string[] ImageNameObject;
 
+        private void DeleteImage()
+
+        {
+            RentalInput ls = new RentalInput();
+
+            ls.stackPanel1.Children.RemoveAt(0);
+
+            File.Delete(@"C:\Users\Public\Pictures\Sample Pictures\Autumn Leaves - Copy.jpg");
+
+        }
+
+        List<object> mylist = new List<object>();
         public RentalInputViewModel()
         {
             string[] a =ImageObject;
@@ -194,12 +212,14 @@ namespace matsukifudousan.ViewModel
 
                 DataProvider.Ins.DB.RentalManagementDB.Add(AddRental);
                 DataProvider.Ins.DB.SaveChanges();
+                string appDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
                 foreach (string item in ImageNameObject)
                 {
-                    var AddImage = new Image()
+                    var AddImage = new ImageDB()
                     {
                         ImageName = item,
+                        ImagePath = appDirectory + "\\RentalImage\\" + item,
                         HouseNo = HouseNo
                     };
                     DataProvider.Ins.DB.Image.Add(AddImage);
@@ -214,14 +234,14 @@ namespace matsukifudousan.ViewModel
                     op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" + "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" + "Portable Network Graphic (*.png)|*.png";
                     imageLocation = op.FileName;
 
-                    string appDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                  
                     MessageBox.Show("データを保存しました。", "Comfirm", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 }
 
                 #endregion
             });
+
+            
 
             AddImageCommand = new RelayCommand<object>((p) =>
             {
@@ -231,6 +251,7 @@ namespace matsukifudousan.ViewModel
                 String imageLocation = "";
                 try
                 {
+                    
                 duplicate:
 
                     RentalInput imageSource = new RentalInput();
@@ -277,6 +298,7 @@ namespace matsukifudousan.ViewModel
                         string conbineCharatar = ";";
                         string appDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
                         DrawingGroup imageDrawings = new DrawingGroup();
+                        RentalInput ls = new RentalInput();
 
 
                         foreach (String item in op.SafeFileNames)
@@ -295,7 +317,28 @@ namespace matsukifudousan.ViewModel
                                 Image += item + conbineCharatar;
                                 ImagePath = op.FileName;
 
+                                NameIMG = op.FileNames;
+
+                                //ls.ListView1.ItemsSource = mylist;
                                 //imageSource.image1.Source = new BitmapImage(new Uri("images/computer.png", UriKind.Relative));
+
+                                //BitmapImage bi = new BitmapImage();
+
+                                //bi.BeginInit();
+
+                                //bi.CacheOption = BitmapCacheOption.OnLoad;
+
+                                //bi.UriSource = new Uri(@"C:\Users\Public\Pictures\Sample Pictures\Autumn Leaves - Copy.jpg");
+
+                                //bi.EndInit();
+
+                                //Image image1 = new Image();
+
+                                //image1.Source = bi;
+
+                                //ls.stackPanel1.Children.Add(image1);
+
+                                //ls.stackPanel1.MouseLeftButtonDown += delegate { DeleteImage(); };
                             }
 
                         }
@@ -307,7 +350,7 @@ namespace matsukifudousan.ViewModel
                             File.Copy(SaveImageItem, System.IO.Path.Combine(appDirectory + "\\RentalImage", System.IO.Path.GetFileName(SaveImageItem)), true);
 
                         }
-                        
+
 
                     }
                 }
@@ -318,8 +361,6 @@ namespace matsukifudousan.ViewModel
                 }
 
             });
-
         }
-
     }
 }

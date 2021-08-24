@@ -1,0 +1,3 @@
+BugFix:
+- [PdfEdit] Fixed exception when flattening misaligned PDF documents
+- [PdfEdit] Fixed values not being visible in input textboxes when values are added programmatically

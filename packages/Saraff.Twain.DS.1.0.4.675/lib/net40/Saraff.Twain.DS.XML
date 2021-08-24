@@ -1,0 +1,3479 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Saraff.Twain.DS</name>
+    </assembly>
+    <members>
+        <member name="T:Saraff.Twain.DS.AudioDataSource">
+            <summary>
+            Provide a Data Source that controls the audio acquisition device and is written by the device developer to
+            comply with TWAIN specifications. Traditional device drivers are now included with the
+            Source software and do not need to be shipped by applications.
+            </summary>
+            <seealso cref="T:Saraff.Twain.DS.DataSource" />
+        </member>
+        <member name="M:Saraff.Twain.DS.AudioDataSource.OnGetXferGroup">
+            <summary>
+            Returns the Data Group (the type of data) for the upcoming transfer. The Source is required to
+            only supply one of the DGs specified in the SupportedGroups field of a AppIdentity.
+            </summary>
+            <returns>
+            The DG_xxxx constant that identifies the type of data that is ready for transfer
+            from the Source
+            </returns>
+        </member>
+        <member name="T:Saraff.Twain.DS.Capabilities.ArrayDataSourceCapability`1">
+            <summary>
+            Provide basic functionality for a capabilities classes with a array of values.
+            </summary>
+            <typeparam name="TValue">The type of the value.</typeparam>
+            <seealso cref="T:Saraff.Twain.DS.DataSourceCapability" />
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.ArrayDataSourceCapability`1.GetCore">
+            <summary>
+            Returns the Source’s Available Values for a specified capability.
+            </summary>
+            <returns>
+            Available Values.
+            </returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.ArrayDataSourceCapability`1.GetValueCore(System.Int32)">
+            <summary>
+            Returns the Source’s Available Value(s) at a specified index for a specified capability.
+            </summary>
+            <param name="index"></param>
+            <returns>
+            Available Value(s).
+            </returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.ArrayDataSourceCapability`1.SetCore(System.Object)">
+            <summary>
+            Changes the Current Value of the capability to that specified by the application.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.ArrayDataSourceCapability`1.SetCore(System.Object,System.Object,System.Object,System.Object,System.Object)">
+            <summary>
+            Changes the Current Value of the capability to that specified by the application.
+            </summary>
+            <param name="minValue">The minimum value.</param>
+            <param name="maxValue">The maximum value.</param>
+            <param name="step">The step.</param>
+            <param name="defaultValue">The default value.</param>
+            <param name="currentValue">The current value.</param>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.ArrayDataSourceCapability`1.SetCore(System.Object[])">
+            <summary>
+            Changes the Current Value of the capability to that specified by the application.
+            </summary>
+            <param name="value">The values.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.ArrayDataSourceCapability`1.SetCore(System.Object[],System.Int32,System.Int32)">
+            <summary>
+            Changes the Current Value of the capability to that specified by the application.
+            </summary>
+            <param name="value">The values.</param>
+            <param name="defaultIndex">The default index.</param>
+            <param name="currentIndex">Index of the current.</param>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.ArrayDataSourceCapability`1.ResetCore">
+            <summary>
+            Change the Current Value of the specified capability back to its power-on value and return the
+            new Current Value.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.ArrayDataSourceCapability`1.CurrentIndexCore">
+            <summary>
+            Gets or sets index of current value.
+            </summary>
+            <value>
+            The index.
+            </value>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.ArrayDataSourceCapability`1.DefaultIndexCore">
+            <summary>
+            Gets or sets index of default value.
+            </summary>
+            <value>
+            The index.
+            </value>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.ArrayDataSourceCapability`1.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.ArrayDataSourceCapability`1.CoreValues">
+            <summary>
+            Gets or sets the internal values.
+            </summary>
+            <value>
+            The values.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.Capabilities.BitDepthReductionAttribute">
+            <summary>
+            Specifies the Reduction Method the Source should use to reduce the bit depth of the data.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.BitDepthReductionAttribute.#ctor(Saraff.Twain.DS.TwBR[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.Capabilities.BitDepthReductionAttribute"/> class.
+            </summary>
+            <param name="methods">The methods.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.BitDepthReductionAttribute.ReductionMethods">
+            <summary>
+            Gets the reduction methods.
+            </summary>
+            <value>
+            The reduction methods.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.Capabilities.CompressionAttribute">
+            <summary>
+            Define compression schemes for Buffered Memory and File transfers.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.CompressionAttribute.#ctor(Saraff.Twain.DS.TwCompression[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.Capabilities.CompressionAttribute"/> class.
+            </summary>
+            <param name="value">The value.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.CompressionAttribute.Compression">
+            <summary>
+            Gets the compression schemes.
+            </summary>
+            <value>
+            The compression schemes.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.Capabilities.CustHalftoneAttribute">
+            <summary>
+            Specifies the square-cell halftone (dithering) matrix the Source should use to halftone the image.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.CustHalftoneAttribute.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.Capabilities.CustHalftoneAttribute"/> class.
+            </summary>
+            <param name="matrix">The matrix.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.CustHalftoneAttribute.Matrix">
+            <summary>
+            Gets the halftone (dithering) matrix.
+            </summary>
+            <value>
+            The halftone (dithering) matrix.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.Capabilities.DefaultValue`1">
+            <summary>
+            Default value of a capability.
+            </summary>
+            <typeparam name="T">Type of a capability value.</typeparam>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.DefaultValue`1.op_Implicit(`0)~Saraff.Twain.DS.Capabilities.DefaultValue{`0}">
+            <summary>
+            Performs an implicit conversion from <see cref="!:T"/> to <see cref="T:Saraff.Twain.DS.Capabilities.DefaultValue`1"/>.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.DefaultValue`1.op_Implicit(Saraff.Twain.DS.Capabilities.DefaultValue{`0})~`0">
+            <summary>
+            Performs an implicit conversion from <see cref="T:Saraff.Twain.DS.Capabilities.DefaultValue`1"/> to <see cref="!:T"/>.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.DefaultValue`1.Value">
+            <summary>
+            Gets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.Capabilities.DevicePropertiesAttribute">
+            <summary>
+            Define device properties.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.DevicePropertiesAttribute.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.Capabilities.DevicePropertiesAttribute"/> class.
+            </summary>
+            <param name="physicalWidth">Width of the physical.</param>
+            <param name="physicalHeight">Height of the physical.</param>
+            <param name="nativeResolutionX">The native resolution x.</param>
+            <param name="nativeResolutionY">The native resolution y.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.DevicePropertiesAttribute.PhysicalHeight">
+            <summary>
+            Gets the height of the physical.
+            </summary>
+            <value>
+            The height of the physical.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.DevicePropertiesAttribute.PhysicalWidth">
+            <summary>
+            Gets the width of the physical.
+            </summary>
+            <value>
+            The width of the physical.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.DevicePropertiesAttribute.YNativeResolution">
+            <summary>
+            Gets the a Y native resolution.
+            </summary>
+            <value>
+            The y native resolution.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.DevicePropertiesAttribute.XNativeResolution">
+            <summary>
+            Gets the a X native resolution.
+            </summary>
+            <value>
+            The x native resolution.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.Capabilities.EnumDataSourceCapability`1">
+            <summary>
+            Provide basic functionality for a capabilities classes with a list of values.
+            </summary>
+            <typeparam name="TValue">The type of the value.</typeparam>
+            <seealso cref="T:Saraff.Twain.DS.DataSourceCapability" />
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.EnumDataSourceCapability`1.GetCore">
+            <summary>
+            Returns the Source’s Available Values for a specified capability.
+            </summary>
+            <returns>
+            Available Values.
+            </returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.EnumDataSourceCapability`1.GetValueCore(System.Int32)">
+            <summary>
+            Returns the Source’s Available Value(s) at a specified index for a specified capability.
+            </summary>
+            <param name="index"></param>
+            <returns>
+            Available Value(s).
+            </returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.EnumDataSourceCapability`1.SetCore(System.Object)">
+            <summary>
+            Changes the Current Value of the capability to that specified by the application.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.EnumDataSourceCapability`1.SetCore(System.Object,System.Object,System.Object,System.Object,System.Object)">
+            <summary>
+            Changes the Current Value of the capability to that specified by the application.
+            </summary>
+            <param name="minValue">The minimum value.</param>
+            <param name="maxValue">The maximum value.</param>
+            <param name="step">The step.</param>
+            <param name="defaultValue">The default value.</param>
+            <param name="currentValue">The current value.</param>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.EnumDataSourceCapability`1.SetCore(System.Object[])">
+            <summary>
+            Changes the Current Value of the capability to that specified by the application.
+            </summary>
+            <param name="value">The values.</param>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.EnumDataSourceCapability`1.SetCore(System.Object[],System.Int32,System.Int32)">
+            <summary>
+            Changes the Current Value of the capability to that specified by the application.
+            </summary>
+            <param name="value">The values.</param>
+            <param name="defaultIndex">The default index.</param>
+            <param name="currentIndex">Index of the current.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.EnumDataSourceCapability`1.ResetCore">
+            <summary>
+            Change the Current Value of the specified capability back to its power-on value and return the
+            new Current Value.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.EnumDataSourceCapability`1.CurrentIndexCore">
+            <summary>
+            Gets or sets index of current value.
+            </summary>
+            <value>
+            The index.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.EnumDataSourceCapability`1.DefaultIndexCore">
+            <summary>
+            Gets or sets index of default value.
+            </summary>
+            <value>
+            The index.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.EnumDataSourceCapability`1.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.EnumDataSourceCapability`1.CoreValues">
+            <summary>
+            Gets or sets the internal values.
+            </summary>
+            <value>
+            The values.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.Capabilities.HalftonesAttribute">
+            <summary>
+            Define a list of names of the halftone patterns available within the Source.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.HalftonesAttribute.#ctor(System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.Capabilities.HalftonesAttribute"/> class.
+            </summary>
+            <param name="patterns">The patterns.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.HalftonesAttribute.Patterns">
+            <summary>
+            Gets the halftone patterns.
+            </summary>
+            <value>
+            The halftone patterns.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.Capabilities.ImageFileFormatAttribute">
+            <summary>
+            Define which file formats the Source can generate.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.ImageFileFormatAttribute.#ctor(Saraff.Twain.DS.TwFF[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.Capabilities.ImageFileFormatAttribute"/> class.
+            </summary>
+            <param name="formats">The formats.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.ImageFileFormatAttribute.SupportedFormats">
+            <summary>
+            Gets the supported formats.
+            </summary>
+            <value>
+            The supported formats.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.Capabilities.LsbFirstSupportedAttribute">
+            <summary>
+            Define that a Source supported LSB (ICAP_BITORDER).
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.LsbFirstSupportedAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.Capabilities.LsbFirstSupportedAttribute"/> class.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.Capabilities.OneDataSourceCapability`1">
+            <summary>
+            Provide basic functionality for a capabilities classes with a single value.
+            </summary>
+            <typeparam name="TValue">The type of the value.</typeparam>
+            <seealso cref="T:Saraff.Twain.DS.DataSourceCapability" />
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.OneDataSourceCapability`1.GetCore">
+            <summary>
+            Returns the Source’s Available Values for a specified capability.
+            </summary>
+            <returns>
+            Available Values.
+            </returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.OneDataSourceCapability`1.GetValueCore(System.Int32)">
+            <summary>
+            Returns the Source’s Available Value(s) at a specified index for a specified capability.
+            </summary>
+            <param name="index"></param>
+            <returns>
+            Available Value(s).
+            </returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.OneDataSourceCapability`1.SetCore(System.Object)">
+            <summary>
+            Changes the Current Value of the capability to that specified by the application.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.OneDataSourceCapability`1.SetCore(System.Object,System.Object,System.Object,System.Object,System.Object)">
+            <summary>
+            Changes the Current Value of the capability to that specified by the application.
+            </summary>
+            <param name="minValue">The minimum value.</param>
+            <param name="maxValue">The maximum value.</param>
+            <param name="step">The step.</param>
+            <param name="defaultValue">The default value.</param>
+            <param name="currentValue">The current value.</param>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.OneDataSourceCapability`1.SetCore(System.Object[])">
+            <summary>
+            Changes the Current Value of the capability to that specified by the application.
+            </summary>
+            <param name="value">The values.</param>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.OneDataSourceCapability`1.SetCore(System.Object[],System.Int32,System.Int32)">
+            <summary>
+            Changes the Current Value of the capability to that specified by the application.
+            </summary>
+            <param name="value">The values.</param>
+            <param name="defaultIndex">The default index.</param>
+            <param name="currentIndex">Index of the current.</param>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.OneDataSourceCapability`1.ResetCore">
+            <summary>
+            Change the Current Value of the specified capability back to its power-on value and return the
+            new Current Value.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.OneDataSourceCapability`1.CurrentIndexCore">
+            <summary>
+            Gets or sets index of current value.
+            </summary>
+            <value>
+            The index.
+            </value>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.OneDataSourceCapability`1.DefaultIndexCore">
+            <summary>
+            Gets or sets index of default value.
+            </summary>
+            <value>
+            The index.
+            </value>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.OneDataSourceCapability`1.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.OneDataSourceCapability`1.CoreValue">
+            <summary>
+            Gets or sets the internal value.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.Capabilities.PixelFlavorAttribute">
+            <summary>
+            Define sense of the pixel whose numeric value is zero (minimum data value).
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.PixelFlavorAttribute.#ctor(Saraff.Twain.DS.TwPF[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.Capabilities.PixelFlavorAttribute"/> class.
+            </summary>
+            <param name="values">The values.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.PixelFlavorAttribute.Values">
+            <summary>
+            Gets the values.
+            </summary>
+            <value>
+            The values.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.Capabilities.PixelTypeAttribute">
+            <summary>
+            Define the type of pixel data that a Source is capable of acquiring (for example, black and white, gray,
+            RGB, etc.).
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.PixelTypeAttribute.#ctor(Saraff.Twain.DS.TwPixelType[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.Capabilities.PixelTypeAttribute"/> class.
+            </summary>
+            <param name="types">The types.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.PixelTypeAttribute.PixelTypes">
+            <summary>
+            Gets the pixel types.
+            </summary>
+            <value>
+            The pixel types.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.PixelTypeAttribute.DefaultValue">
+            <summary>
+            Gets or sets the default value.
+            </summary>
+            <value>
+            The default value.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.Capabilities.PlanarChunkyAttribute">
+            <summary>
+            Define color data formats are available.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.PlanarChunkyAttribute.#ctor(Saraff.Twain.DS.TwPC[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.Capabilities.PlanarChunkyAttribute"/> class.
+            </summary>
+            <param name="values">The values.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.PlanarChunkyAttribute.Values">
+            <summary>
+            Gets the values.
+            </summary>
+            <value>
+            The values.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.PlanarChunkyAttribute.DefaultValue">
+            <summary>
+            Gets or sets the default value.
+            </summary>
+            <value>
+            The default value.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.Capabilities.ThresholdAttribute">
+            <summary>
+            Specifies the dividing line between black and white. This is the value the Source will use to
+            threshold, if needed, when ICAP_PIXELTYPE = TWPT_BW.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.ThresholdAttribute.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.Capabilities.ThresholdAttribute"/> class.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.ThresholdAttribute.Value">
+            <summary>
+            Gets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.Capabilities.XferMechAttribute">
+            <summary>
+            Define a transfer mechanisms the source supports.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.Capabilities.XferMechAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.Capabilities.XferMechAttribute"/> class.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.XferMechAttribute.MemFile">
+            <summary>
+            Gets or sets a value indicating whether a Source supported a Disk File Mode Transfer.
+            </summary>
+            <value>
+              <c>true</c> if supported; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.Capabilities.XferMechAttribute.File">
+            <summary>
+            Gets or sets a value indicating whether a Source supported a Buffered Memory Mode Transfer With File Format.
+            </summary>
+            <value>
+              <c>true</c> if supported; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.CapabilityEventArgs">
+            <summary>
+            Provide information about a event of a capability.
+            </summary>
+            <seealso cref="T:System.EventArgs" />
+        </member>
+        <member name="M:Saraff.Twain.DS.CapabilityEventArgs.#ctor(Saraff.Twain.DS.DataSourceCapability)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.CapabilityEventArgs"/> class.
+            </summary>
+            <param name="capability">The capability.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.CapabilityEventArgs.Capability">
+            <summary>
+            Gets the capability.
+            </summary>
+            <value>
+            The capability.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.DataSourceInstaller">
+            <summary>
+            The Data Source Installer.
+            </summary>
+            <seealso cref="T:System.Configuration.Install.Installer" />
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceInstaller.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.DataSourceInstaller"/> class.
+            </summary>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceInstaller.OnAfterInstall(System.Collections.IDictionary)">
+            <summary>
+            Вызывает событие <see cref="E:System.Configuration.Install.Installer.AfterInstall" />.
+            </summary>
+            <param name="savedState"><see cref="T:System.Collections.IDictionary" />, содержащий состояние компьютера после завершения установки всех установщиков из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceInstaller.OnBeforeUninstall(System.Collections.IDictionary)">
+            <summary>
+            Вызывает событие <see cref="E:System.Configuration.Install.Installer.BeforeUninstall" />.
+            </summary>
+            <param name="savedState"><see cref="T:System.Collections.IDictionary" />, содержащий состояние компьютера до отмены установок установщиками из свойства <see cref="P:System.Configuration.Install.Installer.Installers" />.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceInstaller.Is64Bit">
+            <summary>
+            Gets a value indicating whether is 64 bit OS.
+            </summary>
+            <value>
+              <c>true</c> if is 64 bit OS; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="F:Saraff.Twain.DS.DataSourceInstaller.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceInstaller.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceInstaller.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.IIdentityProvider">
+            <summary>
+            Represents identity provider of a Data Source.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.IIdentityProvider.Identity">
+            <summary>
+            Gets the identity.
+            </summary>
+            <value>
+            The identity.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.Identity">
+            <summary>
+            Identity of a Data Source.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.Identity.Version">
+            <summary>
+            Gets or sets the version.
+            </summary>
+            <value>
+            The version.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.Identity.Company">
+            <summary>
+            Gets or sets the company.
+            </summary>
+            <value>
+            The company.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.Identity.ProductFamily">
+            <summary>
+            Gets or sets the product family.
+            </summary>
+            <value>
+            The product family.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.Identity.ProductName">
+            <summary>
+            Gets or sets the name of the product.
+            </summary>
+            <value>
+            The name of the product.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.ImageInfo">
+            <summary>
+            Information of a image. Описание изображения.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageInfo.XResolution">
+            <summary>
+            Get or set resolution in the horizontal.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageInfo.YResolution">
+            <summary>
+            Get or set resolution in the vertical.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageInfo.ImageWidth">
+            <summary>
+            Get or set columns in the image, -1 if unknown by DS.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageInfo.ImageLength">
+            <summary>
+            Get or set rows in the image, -1 if unknown by DS.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageInfo.BitsPerSample">
+            <summary>
+            Get or set number of bits for each sample.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageInfo.BitsPerPixel">
+            <summary>
+            Get or set number of bits for each padded pixel.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageInfo.Planar">
+            <summary>
+            Get or set <c>true</c> if Planar, <c>false</c> if chunky.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageInfo.PixelType">
+            <summary>
+            Get or set pixel type of image.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageInfo.Compression">
+            <summary>
+            Get or set how the data is compressed.
+            </summary>
+        </member>
+        <member name="M:Saraff.Twain.DS.ImageInfo.ToTwImageInfo">
+            <summary>
+            Performs an implicit conversion from <see cref="T:Saraff.Twain.DS.ImageInfo"/> to <see cref="T:Saraff.Twain.DS.TwImageInfo"/>.
+            </summary>
+            <returns>The TwImageInfo.</returns>
+        </member>
+        <member name="T:Saraff.Twain.DS.ImageLayoutAttribute">
+            <summary>
+            Define information on the physical layout of the image on the
+            acquisition platform of the Source(e.g.the glass of a flatbed scanner,the size of a photograph,
+            etc.).
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.ImageLayoutAttribute.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.ImageLayoutAttribute"/> class.
+            </summary>
+            <param name="x">The X.</param>
+            <param name="y">The Y.</param>
+            <param name="width">The width.</param>
+            <param name="height">The height.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageLayoutAttribute.Frame">
+            <summary>
+            Gets the physical layout of the image.
+            </summary>
+            <value>
+            The frame.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.ImageMemXfer">
+            <summary>
+            Used to pass image entry (e.g. in strips) from DS to appId.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageMemXfer.Compression">
+            <summary>
+            Get or set how the entry is compressed.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageMemXfer.BytesPerRow">
+            <summary>
+            Get or set number of bytes in a row of entry.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageMemXfer.Columns">
+            <summary>
+            Get or set number of columns.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageMemXfer.Rows">
+            <summary>
+            Get or set number of rows.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageMemXfer.XOffset">
+            <summary>
+            Get or set offset from the side of the image.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageMemXfer.YOffset">
+            <summary>
+            Get or set offset from the top of the image.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageMemXfer.ImageData">
+            <summary>
+            Get or set a image data.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageMemXfer.IsXferDone">
+            <summary>
+            Gets or sets a value indicating that a Source done transferring the specified image.
+            </summary>
+            <value>
+            <c>true</c> if a Source done transferring the specified image; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.MemXferBufferSizeAttribute">
+            <summary>
+            Define preferred buffer size for a memory transfer mode.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.MemXferBufferSizeAttribute.#ctor(System.UInt32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.MemXferBufferSizeAttribute"/> class.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.MemXferBufferSizeAttribute.Value">
+            <summary>
+            Gets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.SupportedDataCodesAttribute">
+            <summary>
+            Define supported a Data Codes for a Data Source.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.SupportedDataCodesAttribute.#ctor(Saraff.Twain.DS.TwDAT[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.SupportedDataCodesAttribute"/> class.
+            </summary>
+            <param name="dats">The dats.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.SupportedDataCodesAttribute.DataCodes">
+            <summary>
+            Gets the data codes.
+            </summary>
+            <value>
+            The data codes.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.CapabilityAttribute">
+            <summary>
+            Define supported a capapability.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.CapabilityAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.CapabilityAttribute"/> class.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.CapabilityAttribute.Type">
+            <summary>
+            Gets the type of a capability.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.DataSource">
+            <summary>
+            Provide a Data Source. Traditional device drivers are now included with the
+            Source software and do not need to be shipped by applications.
+            </summary>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource.ProcessRequest(Saraff.Twain.DS.TwIdentity,Saraff.Twain.DS.TwDG,Saraff.Twain.DS.TwDAT,Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            Every Source is required to have a single entry point called DS_Entry. DS_Entry is only called by the Source Manager.
+            </summary>
+            <param name="appId">
+            This points to a TwIdentity structure, allocated by the application, that describes the
+            application making the call. One of the fields in this structure, called Id, is an arbitrary and
+            unique identifier assigned by the Source Manager to tag the application as a unique TWAIN
+            entity. The Source Manager maintains a copy of the application’s identity structure, so the
+            application must not modify that structure unless it first breaks its connection with the Source
+            Manager,then reconnects to cause the Source Manager to store the new, modified identity.
+            </param>
+            <param name="dg">The Data Group of the operation triplet. Currently, only DG_CONTROL, DG_IMAGE, and DG_AUDIO are defined.</param>
+            <param name="dat">The Data Argument Type of the operation triplet.</param>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">
+            The pData parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.
+            </param>
+            <returns>TWAIN Return Codes.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource._EventProcessRequest(Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            DG_CONTROL / DAT_EVENT / MSG_PROCESSEVENT
+            This operation supports the distribution of events from the application to Sources so that the
+            Source can maintain its user interface and return messages to the application.Once the
+            application has enabled the Source, it must immediately begin sending to the Source all events
+            that enter the application’s main event loop. This allows the Source to update its user interface in
+            real-time and to return messages to the application which cause state transitions. Even if the
+            application overrides the Source’s user interface, it must forward all events once the Source has
+            been enabled. The Source will tell the application whether or not each event belongs to the Source.
+            
+            The Source should be structured such that identification of the event’s “owner” is handled before
+            doing anything else. Further, the Source should return immediately if the Source isn’t the owner.
+            This convention should minimize performance concerns for the application (remember, these
+            events are only sent while a Source is enabled—that is, just before and just after the transfer is
+            taking place).
+            </summary>
+            <remarks>Events only need to be forwarded to the Source while it is enabled.</remarks>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">The data parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.</param>
+            <returns>TWAIN Return Codes.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource._UserInterfaceProcessRequest(Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            DG_CONTROL / DAT_USERINTERFACE / MSG_ENABLEDS
+            This operation causes three responses in the Source:
+            - Places the Source into a “ready to acquire” condition. If the application raises the Source’s user
+            interface (see #2, below), the Source will wait to assert MSG_XFERREADY until the “GO” button
+            in its user interface or on the device is clicked. If the application bypasses the Source’s user
+            interface, this operation causes the Source to become immediately “armed”. That is, the Source
+            should assert MSG_XFERREADY as soon as it has data to transfer.
+            - The application can choose to raise the Source’s built-in user interface, or not, using this
+            operation. The application signals the Source’s user interface should be displayed by setting
+            pUserInterface->ShowUI to TRUE. If the application does not want the Source’s user interface
+            to be displayed, or wants to replace the Source’s user interface with one of its own, it sets
+            pUserInterface->ShowUI to FALSE. If activated, the Source’s user interface will remain
+            displayed until it is closed by the user or explicitly disabled by the application(see Note).
+            - Terminates Source’s acceptance of “set capability” requests from the application. Capabilities
+            can only be negotiated in State 4 (unless special arrangements are made using the
+            CAP_EXTENDEDCAPS capability). Values of capabilities can still be inquired in States 5 through 7.
+            Note: Once the Source is enabled, the application must begin sending the Source every event
+            that enters the application’s main event loop.The application must continue to send the
+            Source events until it disables(MSG_DISABLEDS) the Source. This is true even if the
+            application chooses not to use the Source’s built-in user interface.
+            
+            DG_CONTROL / DAT_USERINTERFACE / MSG_DISABLEDS
+            This operation causes the Source’s user interface, if displayed during the 
+            DG_CONTROL / DAT_USERINTERFACE / MSG_ENABLEDS operation, to be lowered. The Source is returned to
+            State 4,where capability negotiation can again occur. The application can invoke this operation
+            either because it wants to shut down the current session,or in response to the Source “posting” a
+            MSG_CLOSEDSREQ event to it. Rarely, the application may need to close the Source because an
+            error condition was detected.
+            </summary>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">The data parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.</param>
+            <returns>TWAIN Return Codes.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource._XferGroupProcessRequest(Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            DG_CONTROL / DAT_XFERGROUP / MSG_GET
+            Returns the Data Group (the type of data) for the upcoming transfer. The Source is required to
+            only supply one of the DGs specified in the SupportedGroups field of a AppIdentity.
+            </summary>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">The data parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.</param>
+            <returns>TWAIN Return Codes.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource._CapabilityProcessRequest(Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            DG_CONTROL / DAT_CAPABILITY / MSG_GET
+            Returns the Source’s Current, Default and Available Values for a specified capability.
+            If the application requests this operation on a capability your Source does not recognize (and
+            you’re sure you’ve implemented all the capabilities that you’re required to), disregard the
+            operation, but return TWRC_FAILURE with TWCC_BADCAP.
+            If you support the capability, fill in the fields listed below and allocate the container structure and
+            place its handle into pCapability->hContainer.The container should be referenced by a
+            “handle” of type TW_HANDLE.
+            Set ConType to the container type your Source uses for this capability. For the container type of
+            TWON_ONEVALUE provide the Current Value.For the container type of TWON_ARRAY provide the
+            Available Values.For container types TWON_ENUMERATION and TWON_RANGE provide the
+            Current,Default and Available Values.
+            This is a memory allocation operation. It is possible for this operation to fail due to a low memory
+            condition.Be sure to verify that the allocation is successful.If it is not, attempt to reduce the
+            amount of memory occupied by the Source.If the allocation cannot be made, return
+            TWRC_FAILURE with TWCC_LOWMEMORY to the application and set the
+            pCapability->hContainer handle to NULL.
+            
+            DG_CONTROL / DAT_CAPABILITY / MSG_GETCURRENT
+            Returns the Source’s Current Value for the specified capability.
+            The Current Value reflects previous MSG_SET operations on the capability, or Source’s automatic
+            changes. (See MSG_SET).
+            
+            DG_CONTROL / DAT_CAPABILITY / MSG_GETDEFAULT
+            Returns the Source’s Default Value. This is the Source’s preferred default value.
+            The Source’s Default Value cannot be changed.
+            
+            DG_CONTROL / DAT_CAPABILITY / MSG_SET
+            Changes the Current Value of the capability to that specified by the application. As of TWAIN 2.2
+            MSG_SET only modifies the Current Value of the specified capability, constraints cannot be
+            changed with MSG_SET.The original functionality of MSG_SET has been addressed in
+            MSG_SETCONSTRAINT for TWAIN 2.2 Sources and higher. (Please refer to DG_CONTROL / DAT_CAPABILITY / MSG_SETCONSTRAINT)
+            
+            DG_CONTROL / DAT_CAPABILITY / MSG_RESET
+            Change the Current Value of the specified capability back to its power-on value and return the
+            new Current Value.
+            The power-on value is the Current Value the Source started with when it entered State 4 after a
+            DG_CONTROL / DAT_IDENTITY / MSG_OPENDS.These values are listed as TWAIN defaults. If “no default” 
+            is specified, the Source uses it preferred default value (returned from MSG_GETDEFAULT).
+            
+            DG_CONTROL / DAT_CAPABILITY / MSG_RESETALL
+            This command resets all current values back to original power-on defaults. All current values are
+            set to their default value except is the where mandatory values are required.All constraints are
+            removed for all of the negotiable capabilities supported by the driver.
+            
+            DG_CONTROL / DAT_CAPABILITY / MSG_QUERYSUPPORT
+            Returns the Source’s support status of this capability.
+            </summary>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">The data parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.</param>
+            <returns>TWAIN Return Codes.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource._SetupMemXferProcessRequest(Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            DG_CONTROL / DAT_SETUPMEMXFER / MSG_GET
+            Returns the Source’s preferred, minimum, and maximum allocation sizes for transfer memory
+            buffers.The application using buffered memory transfers must use a buffer size between
+            MinBufSize and MaxBufSize in their TW_IMAGEMEMXFER.Memory.Length when using the
+            DG_IMAGE / DAT_IMAGEMEMXFER / MSG_GET operation. Sources may return a more efficient
+            preferred value in State 6 after the image size, etc. has been specified.
+            </summary>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">The data parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.</param>
+            <returns>TWAIN Return Codes.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource._SetupFileXferProcessRequest(Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            DG_CONTROL / DAT_SETUPFILEXFER / MSG_GET
+            Returns information about the file into which the Source has or will put the acquired DG_IMAGE or DG_AUDIO data.
+            
+            DG_CONTROL / DAT_SETUPFILEXFER / MSG_GETDEFAULT
+            Returns information for the default DG_IMAGE or DG_AUDIO file.
+            
+            DG_CONTROL / DAT_SETUPFILEXFER / MSG_RESET
+            Resets the current file information to the DG_IMAGE or DG_AUDIO default file information and
+            returns that default information.
+            
+            DG_CONTROL / DAT_SETUPFILEXFER / MSG_SET
+            Sets the file transfer information for the next file transfer. The application is responsible for
+            verifying that the specified file name is valid and that the file either does not currently exist(in
+            which case, the Source is to create the file), or that the existing file is available for opening and
+            read/write operations. The application should also assure that the file format it is requesting can
+            be provided by the Source (otherwise,the Source will generate a TWRC_FAILURE /
+            TWCC_BADVALUE error).
+            </summary>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">The data parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.</param>
+            <returns>TWAIN Return Codes.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource._PendingXfersProcessRequest(Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            DG_CONTROL / DAT_PENDINGXFERS / MSG_ENDXFER
+            This triplet is used to cancel or terminate a transfer. Issued in state 6, this triplet cancels the next
+            pending transfer, discards the transfer data, and decrements the pending transfers count. In state 7,
+            this triplet terminates the current transfer. If any data has not been transferred (this is only
+            possible during a memory transfer) that data is discarded.
+            The application can use this operation to cancel the next pending transfer (Source writers take
+            note of this). For example, after the application checks TW_IMAGEINFO(or TW_AUDIOINFO, if
+            transferring audio snippets), it may decide to not transfer the next image. The operation must be
+            sent prior to the beginning of the transfer, otherwise the Source will simply abort the current
+            transfer. The Source decrements the number of pending transfers.
+            
+            DG_CONTROL / DAT_PENDINGXFERS / MSG_GET
+            Returns the number of transfers the Source is ready to supply to the application, upon demand. If
+            DAT_XFERGROUP is set to DG_IMAGE, this is the number of images.If DAT_XFERGROUP is set to
+            DG_AUDIO, this is the number of audio snippets for the current image. If there is no current
+            image, this call must return TWRC_FAILURE / TWCC_SEQERROR.
+            
+            DG_CONTROL / DAT_PENDINGXFERS / MSG_RESET
+            Sets the number of pending transfers in the Source to zero.
+            </summary>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">The data parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.</param>
+            <returns>TWAIN Return Codes.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource.OnProcessRequest(Saraff.Twain.DS.TwDG,Saraff.Twain.DS.TwDAT,Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            Invoked to processing a TWAIN operations (Triplets).
+            </summary>
+            <param name="dg">The Data Group of the operation triplet. Currently, only DG_CONTROL, DG_IMAGE, and DG_AUDIO are defined.</param>
+            <param name="dat">The Data Argument Type of the operation triplet.</param>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">
+            The pData parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.
+            </param>
+            <returns>TWAIN Return Codes.</returns>
+            <exception cref="T:Saraff.Twain.DS.DataSourceException"></exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource.OnProcessEvent(System.Windows.Forms.Message)">
+            <summary>
+            This operation supports the distribution of events from the application to Sources so that the
+            Source can maintain its user interface and return messages to the application.Once the
+            application has enabled the Source, it must immediately begin sending to the Source all events
+            that enter the application’s main event loop. This allows the Source to update its user interface in
+            real-time and to return messages to the application which cause state transitions. Even if the
+            application overrides the Source’s user interface, it must forward all events once the Source has
+            been enabled. The Source will tell the application whether or not each event belongs to the Source.
+            
+            The Source should be structured such that identification of the event’s “owner” is handled before
+            doing anything else. Further, the Source should return immediately if the Source isn’t the owner.
+            This convention should minimize performance concerns for the application (remember, these
+            events are only sent while a Source is enabled—that is, just before and just after the transfer is
+            taking place).
+            </summary>
+            <param name="msg">The Message of the operation triplet.</param>
+            <returns><c>true</c> if a source consumed event--application should not process it; <c>false</c> if Event belongs to application - process as usual.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource.OnEnableDS(System.Boolean,System.Boolean,System.IntPtr)">
+            <summary>
+            If showUI is <c>true</c>, the Source should display its user interface and wait for
+            the user to initiate an acquisition. If showUI is <c>false</c>,the Source should
+            immediately begin acquiring data based on its current configuration (a device that requires the
+            user to push a button on the device,such as a hand-scanner,will be “armed” by this operation and
+            will assert MSG_XFERREADY as soon as the Source has data ready for transfer). The Source should
+            fail any attempt to set a capability value (TWRC_FAILURE / TWCC_SEQERROR) until it returns to
+            State 4 (unless an exception approval exists via a CAP_EXTENDEDCAPS agreement).
+            
+            Note: If the application has set showUI or CAP_INDICATORS to <c>true</c>, then the Source is
+            responsible for presenting the user with appropriate progress indicators regarding the
+            acquisition and transfer process. If showUI is set to <c>true</c>, CAP_INDICATORS is ignored
+            and progress and errors are always shown.
+            
+            Note: It is strongly recommended that all Sources support being enabled without their User
+            Interface if the application requests (showUI = <c>false</c>). But if your
+            Source cannot be used without its User Interface, it should enable showing the Source
+            User Interface (just as if showUI = <c>true</c>) but return TWRC_CHECKSTATUS. All Sources,
+            however, must support the CAP_UICONTROLLABLE. This capability reports whether or
+            not a Source allows showUI = <c>false</c>. An application can use this capability to know
+            whether the Source-supplied user interface can be suppressed before it is displayed.
+            </summary>
+            <param name="showUI"><c>true</c> if DS should bring up its UI.</param>
+            <param name="modalUI"><c>true</c> if the DS's UI is modal.</param>
+            <param name="hwnd">For windows only - Application window handle.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource.OnDisableDS(System.IntPtr)">
+            <summary>
+            If the Source’s user interface is displayed, it should be lowered. The Source returns to State 4 and
+            is again available for capability negotiation.
+            </summary>
+            <param name="hwnd">For windows only - Application window handle.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource.OnGetXferGroup">
+            <summary>
+            Returns the Data Group (the type of data) for the upcoming transfer. The Source is required to
+            only supply one of the DGs specified in the SupportedGroups field of a AppIdentity.
+            </summary>
+            <returns>The DG_xxxx constant that identifies the type of data that is ready for transfer
+            from the Source</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource.OnCapabilityChanged(Saraff.Twain.DS.CapabilityEventArgs)">
+            <summary>
+            Invoked when the capability value changed.
+            </summary>
+            <param name="e">Information about the capability that was changed.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource.OnCapabilityValueNeeded(Saraff.Twain.DS.CapabilityEventArgs)">
+            <summary>
+            Invoked when the capability value need.
+            </summary>
+            <param name="e">Information about the capability that was changed.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource.OnSetupFileXfer(System.String,Saraff.Twain.DS.TwFF)">
+            <summary>
+            Invoked when a aplication sets the file transfer information for the next file transfer. The application is responsible for
+            verifying that the specified file name is valid and that the file either does not currently exist (in
+            which case, the Source is to create the file), or that the existing file is available for opening and
+            read/write operations. The application should also assure that the file format it is requesting can
+            be provided by the Source (otherwise,the Source will generate a TWRC_FAILURE / TWCC_BADVALUE error).
+            </summary>
+            <param name="fileName">File to contain entry.</param>
+            <param name="format">A TWFF_xxxx constant.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource.OnResetXfer">
+            <summary>
+            Invoked when the pending transfers discarded.
+            </summary>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource.OnEndXfer">
+            <summary>
+            Invoked at the end of every transfer to signal that the application has received all the data it expected.
+            </summary>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource.OnXferReady">
+            <summary>
+            Invoked to indicate that the Source has data that is ready to be transferred.
+            </summary>
+            <exception cref="T:Saraff.Twain.DS.DataSourceException"></exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSource.OnCloseDSReq">
+            <summary>
+            Invoked to indicate that the Source needs to be closed.
+            </summary>
+            <exception cref="T:Saraff.Twain.DS.DataSourceException"></exception>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSource.AppIdentity">
+            <summary>
+            Gets a TwIdentity instance, that describes the application making the call.
+            </summary>
+            <value>
+            Instance of TwIdentity.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSource.Item(Saraff.Twain.DS.TwCap)">
+            <summary>
+            Gets the <see cref="T:Saraff.Twain.DS.DataSourceCapability"/> for the specified capability.
+            </summary>
+            <value>
+            The <see cref="T:Saraff.Twain.DS.DataSourceCapability"/>.
+            </value>
+            <param name="cap">The capability.</param>
+            <returns>Instance of <see cref="T:Saraff.Twain.DS.DataSourceCapability"/>.</returns>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSource.SupportedCapabilities">
+            <summary>
+            Gets the supported capabilities.
+            </summary>
+            <value>
+            The supported capabilities.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSource.SupportedDataCodes">
+            <summary>
+            Gets the supported data codes.
+            </summary>
+            <value>
+            The supported data codes.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSource.SupportedXferMechs">
+            <summary>
+            Gets the supported transfer mechanisms.
+            </summary>
+            <value>
+            The supported transfer mechanisms.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSource.XferEnvironment">
+            <summary>
+            Gets the a transfer environment.
+            </summary>
+            <value>
+            Instance of <see cref="P:Saraff.Twain.DS.DataSource.XferEnvironment"/>.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSource.State">
+            <summary>
+            Gets or sets the state of a Source.
+            </summary>
+            <value>
+            The state.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSource.Factory">
+            <summary>
+            Фабрика классов.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.DataSourceState">
+            <summary>
+            States of a data source.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.DataSourceState.Enabled">
+            <summary>
+            DS is enabled.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.DataSourceState.Ready">
+            <summary>
+            DS is ready to transfer.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.DataSourceState.Transferring">
+            <summary>
+            DS transferring data to aplication.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.DataSourceAttribute">
+            <summary>
+            Define a Data Source.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.DataSourceAttribute"/> class.
+            </summary>
+            <param name="type">The type.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceAttribute.Type">
+            <summary>
+            Gets the type of a Data Source.
+            </summary>
+            <value>
+            The type.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceAttribute.Language">
+            <summary>
+            Gets or sets the language.
+            </summary>
+            <value>
+            The language.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceAttribute.Country">
+            <summary>
+            Gets or sets the country.
+            </summary>
+            <value>
+            The country.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceAttribute.MaxConnectionCount">
+            <summary>
+            Gets or sets the maximum connection count.
+            </summary>
+            <value>
+            The maximum connection count.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceAttribute.IdentityProvider">
+            <summary>
+            Gets or sets the identity provider of a Data Source.
+            </summary>
+            <value>
+            The identity provider of a Data Source.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.DataSourceCapabilityAttribute">
+            <summary>
+            Define property of a capability.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceCapabilityAttribute.#ctor(Saraff.Twain.DS.TwCap,Saraff.Twain.DS.TwType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.DataSourceCapabilityAttribute"/> class.
+            </summary>
+            <param name="capability">The capability.</param>
+            <param name="type">The type.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceCapabilityAttribute.Capability">
+            <summary>
+            Gets the capability constant.
+            </summary>
+            <value>
+            The capability constant.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceCapabilityAttribute.Type">
+            <summary>
+            Gets the type of capability value.
+            </summary>
+            <value>
+            The data type.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceCapabilityAttribute.Get">
+            <summary>
+            Gets or sets a container type of capability values. A Enum by default.
+            </summary>
+            <value>
+            The container type.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceCapabilityAttribute.GetCurrent">
+            <summary>
+            Gets or sets a container type of current value. A One by default.
+            </summary>
+            <value>
+            The container type.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceCapabilityAttribute.GetDefault">
+            <summary>
+            Gets or sets a container type of default value. A One by default.
+            </summary>
+            <value>
+            The container type.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceCapabilityAttribute.SupportedOperations">
+            <summary>
+            Gets or sets the supported operations. A Get|GetCurrent|GetDefault|Set|Reset by default.
+            </summary>
+            <value>
+            The supported operations.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.DataSourceException">
+            <summary>
+            Exception of a Data Source.
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceException.#ctor(Saraff.Twain.DS.TwRC,Saraff.Twain.DS.TwCC)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.DataSourceException"/> class.
+            </summary>
+            <param name="rc">The TWRC_xxxx.</param>
+            <param name="cc">The TWCC_xxxx.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceException.#ctor(Saraff.Twain.DS.TwRC,Saraff.Twain.DS.TwCC,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.DataSourceException"/> class.
+            </summary>
+            <param name="rc">The TWRC_xxxx.</param>
+            <param name="cc">The TWCC_xxxx.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceException.ReturnCode">
+            <summary>
+            Возвращает код результата операции. Get return code.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceException.ConditionCode">
+            <summary>
+            Возвращает код состояния операции. Get condition code.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.IDataSource">
+            <summary>
+            Provide a Data Source. Traditional device drivers are now included with the
+            Source software and do not need to be shipped by applications.
+            </summary>
+        </member>
+        <member name="M:Saraff.Twain.DS.IDataSource.ProcessRequest(Saraff.Twain.DS.TwIdentity,Saraff.Twain.DS.TwDG,Saraff.Twain.DS.TwDAT,Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            Every Source is required to have a single entry point called DS_Entry. DS_Entry is only called by the Source Manager.
+            </summary>
+            <param name="appId">
+            This points to a TwIdentity structure, allocated by the application, that describes the
+            application making the call. One of the fields in this structure, called Id, is an arbitrary and
+            unique identifier assigned by the Source Manager to tag the application as a unique TWAIN
+            entity. The Source Manager maintains a copy of the application’s identity structure, so the
+            application must not modify that structure unless it first breaks its connection with the Source
+            Manager,then reconnects to cause the Source Manager to store the new, modified identity.
+            </param>
+            <param name="dg">The Data Group of the operation triplet. Currently, only DG_CONTROL, DG_IMAGE, and DG_AUDIO are defined.</param>
+            <param name="dat">The Data Argument Type of the operation triplet.</param>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">
+            The pData parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="T:Saraff.Twain.DS.DataSourceCapability">
+            <summary>
+            Provide basic functionality for a capabilities classes.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceCapability.CapabilityInfo">
+            <summary>
+            Gets the capability information.
+            </summary>
+            <value>
+            The capability information.
+            </value>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="E:Saraff.Twain.DS.DataSourceCapability.CapabilityChanged">
+            <summary>
+            Occurs when a capability value changed.
+            </summary>
+        </member>
+        <member name="E:Saraff.Twain.DS.DataSourceCapability.CapabilityValueNeeded">
+            <summary>
+            Occurs when a capability value needed.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceCapability.DataSource">
+            <summary>
+            Get related instance of <see cref="P:Saraff.Twain.DS.DataSourceCapability.DataSource"/>.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceCapability.DS">
+            <summary>
+            Get related instance of <see cref="P:Saraff.Twain.DS.DataSourceCapability.DataSource"/>.
+            </summary>
+            <value>
+            The Data Source.
+            </value>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceCapability.GetCore">
+            <summary>
+            Returns the Source’s Available Values for a specified capability.
+            </summary>
+            <returns>Available Values.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceCapability.GetValueCore(System.Int32)">
+            <summary>
+            Returns the Source’s Available Value(s) at a specified index for a specified capability.
+            </summary>
+            <returns>Available Value(s).</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceCapability.SetCore(System.Object)">
+            <summary>
+            Changes the Current Value of the capability to that specified by the application.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceCapability.SetCore(System.Object,System.Object,System.Object,System.Object,System.Object)">
+            <summary>
+            Changes the Current Value of the capability to that specified by the application.
+            </summary>
+            <param name="minValue">The minimum value.</param>
+            <param name="maxValue">The maximum value.</param>
+            <param name="step">The step.</param>
+            <param name="defaultValue">The default value.</param>
+            <param name="currentValue">The current value.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceCapability.SetCore(System.Object[])">
+            <summary>
+            Changes the Current Value of the capability to that specified by the application.
+            </summary>
+            <param name="value">The values.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceCapability.SetCore(System.Object[],System.Int32,System.Int32)">
+            <summary>
+            Changes the Current Value of the capability to that specified by the application.
+            </summary>
+            <param name="value">The values.</param>
+            <param name="defaultIndex">The default index.</param>
+            <param name="currentIndex">Index of the current.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceCapability.ResetCore">
+            <summary>
+            Change the Current Value of the specified capability back to its power-on value and return the
+            new Current Value.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceCapability.SupportedOperationsCore">
+            <summary>
+            Returns the Source’s support status of this capability.
+            </summary>
+            <value>
+            The supported operations.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceCapability.CurrentIndexCore">
+            <summary>
+            Gets or sets index of current value.
+            </summary>
+            <value>
+            The index.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceCapability.DefaultIndexCore">
+            <summary>
+            Gets or sets index of default value.
+            </summary>
+            <value>
+            The index.
+            </value>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceCapability.ToRange(System.Object,System.Object,System.Object,System.Object,System.Object)">
+            <summary>
+            Pack values to the range array.
+            </summary>
+            <param name="minValue">The minimum value.</param>
+            <param name="maxValue">The maximum value.</param>
+            <param name="step">The step.</param>
+            <param name="defaultValue">The default value.</param>
+            <param name="currentValue">The current value.</param>
+            <returns>Array of values.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceCapability.OnCapabilityChanged">
+            <summary>
+            Invoked when the capability value changed.
+            </summary>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceCapability.OnCapabilityValueNeeded">
+            <summary>
+            Invoked when the capability value needed.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceCapability.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.ImageDataSource">
+            <summary>
+            Provide a Data Source that controls the image acquisition device and is written by the device developer to
+            comply with TWAIN specifications. Traditional device drivers are now included with the
+            Source software and do not need to be shipped by applications.
+            </summary>
+        </member>
+        <member name="M:Saraff.Twain.DS.ImageDataSource.OnProcessRequest(Saraff.Twain.DS.TwDG,Saraff.Twain.DS.TwDAT,Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            Invoked to processing a TWAIN operations (Triplets).
+            </summary>
+            <param name="dg">The Data Group of the operation triplet. Currently, only DG_CONTROL, DG_IMAGE, and DG_AUDIO are defined.</param>
+            <param name="dat">The Data Argument Type of the operation triplet.</param>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">The pData parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.</param>
+            <returns>
+            TWAIN Return Codes.
+            </returns>
+            <exception cref="T:Saraff.Twain.DS.DataSourceException">
+            </exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.ImageDataSource.OnGetXferGroup">
+            <summary>
+            Returns the Data Group (the type of data) for the upcoming transfer. The Source is required to
+            only supply one of the DGs specified in the SupportedGroups field of a AppIdentity.
+            </summary>
+            <returns>
+            The DG_xxxx constant that identifies the type of data that is ready for transfer
+            from the Source
+            </returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.ImageDataSource._ImageLayoutProcessRequest(Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            DG_IMAGE / DAT_IMAGELAYOUT / MSG_GET
+            The DAT_IMAGELAYOUT operations control information on the physical layout of the image on the
+            acquisition platform of the Source(e.g.the glass of a flatbed scanner,the size of a photograph,
+            etc.).
+            The MSG_GET operation describes both the size and placement of the image on the scanner.The
+            coordinates on the scanner and the extents of the image are expressed in the unit of measure
+            currently negotiated for ICAP_UNITS(default is inches).
+            
+            DG_IMAGE / DAT_IMAGELAYOUT / MSG_GETDEFAULT
+            This operation returns the default information on the layout of an image. This is the size and
+            position of the image that will be acquired from the Source if the acquisition is started with the
+            Source(and the device it is controlling) in its power-on state(for instance,most flatbed scanners
+            will capture the entire bed).
+            
+            DG_IMAGE / DAT_IMAGELAYOUT / MSG_RESET
+            This operation sets the image layout information for the next transfer to its default settings.
+            
+            DG_IMAGE / DAT_IMAGELAYOUT / MSG_SET
+            This operation sets the layout for the next image transfer. This allows the application to specify
+            the physical area to be acquired during the next image transfer(for instance,a frame-based
+            application would pass to the Source the size of the frame the user selected within the
+            application—the helpful Source would present a selection region already sized to match the
+            layout frame size).
+            </summary>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">The data parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.</param>
+            <returns>TWAIN Return Codes.</returns>
+            <exception cref="T:Saraff.Twain.DS.DataSourceException">
+            </exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.ImageDataSource._ImageInfoProcessRequest(Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            DG_IMAGE / DAT_IMAGEINFO / MSG_GET
+            This operation provides the Application with specific image description
+            information about the current image that has just been transferred.
+            </summary>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">The data parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.</param>
+            <returns>TWAIN Return Codes.</returns>
+            <exception cref="T:Saraff.Twain.DS.DataSourceException"></exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.ImageDataSource._ImageNativeXferProcessRequest(Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            DG_IMAGE / DAT_IMAGENATIVEXFER / MSG_GET
+            Causes the transfer of an image’s data from the Source to the application, via the Native transfer
+            mechanism, to begin.The resulting data is stored in main memory in a single block.The data is
+            stored in the Operating Systems native image format. The size of the image that can be transferred
+            is limited to the size of the memory block that can be allocated by the Source.If the image is too
+            large to fit,the Source may resize or crop the image.
+            </summary>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">The data parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.</param>
+            <returns>TWAIN Return Codes.</returns>
+            <exception cref="T:Saraff.Twain.DS.DataSourceException"></exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.ImageDataSource._ImageMemXferProcessRequest(Saraff.Twain.DS.TwMSG,System.IntPtr,System.Boolean)">
+            <summary>
+            DG_IMAGE / DAT_IMAGEMEMXFER / MSG_GET
+            This operation is used to initiate the transfer of an image from the Source to the application via the
+            Buffered Memory transfer mechanism.
+            This operation supports the transfer of successive blocks of image data (in strips or, optionally,
+            tiles) from the Source into one or more main memory transfer buffers. These buffers(for strips)
+            are allocated and owned by the application. For tiled transfers, the source allocates the buffers.
+            The application should repeatedly invoke this operation while TWRC_SUCCESS is returned by the Source.
+            </summary>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">The data parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.</param>
+            <param name="isMemFile">If set to <c>true</c> that transfer a MemFile.</param>
+            <returns>TWAIN Return Codes.</returns>
+            <exception cref="T:Saraff.Twain.DS.DataSourceException">
+            </exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.ImageDataSource._ImageFileXferProcessRequest(Saraff.Twain.DS.TwMSG)">
+            <summary>
+            DG_IMAGE / DAT_IMAGEFILEXFER / MSG_GET
+            This operation is used to initiate the transfer of an image from the Source to the application via the
+            disk-file transfer mechanism. It causes the transfer to begin.
+            </summary>
+            <param name="msg">The Message of the operation triplet.</param>
+            <returns>TWAIN Return Codes.</returns>
+            <exception cref="T:Saraff.Twain.DS.DataSourceException"></exception>
+        </member>
+        <member name="M:Saraff.Twain.DS.ImageDataSource.OnImageNativeXfer">
+            <summary>
+            Causes the transfer of an image’s data from the Source to the application, via the Native transfer
+            mechanism, to begin. The resulting data is stored in main memory in a single block. The data is
+            stored in the Operating Systems native image format. The size of the image that can be transferred
+            is limited to the size of the memory block that can be allocated by the Source. If the image is too
+            large to fit, the Source may resize or crop the image.
+            </summary>
+            <returns>A image to transfer.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.ImageDataSource.OnImageMemXfer(System.Int64,System.Boolean)">
+            <summary>
+            This operation is used to initiate the transfer of an image from the Source to the application via the
+            Buffered Memory transfer mechanism.
+            This operation supports the transfer of successive blocks of image data (in strips or,optionally,
+            tiles) from the Source into one or more main memory transfer buffers. These buffers(for strips)
+            are allocated and owned by the application. For tiled transfers, the source allocates the buffers.
+            The application should repeatedly invoke this operation while TWRC_SUCCESS is returned by the Source.
+            </summary>
+            <param name="length">The length.</param>
+            <param name="isMemFile">If set to <c>true</c> that transfer a MemFile.</param>
+            <returns>Information about transmitting data.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.ImageDataSource.OnImageFileXfer">
+            <summary>
+            This operation is used to initiate the transfer of an image from the Source to the application via the
+            disk-file transfer mechanism. It causes the transfer to begin.
+            </summary>
+            <exception cref="T:Saraff.Twain.DS.DataSourceException"></exception>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageDataSource.CurrentImageLayout">
+            <summary>
+            Gets or sets the current image layout.
+            </summary>
+            <value>
+            The current image layout.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.ImageDataSource.DefaultImageLayout">
+            <summary>
+            Gets the default image layout.
+            </summary>
+            <value>
+            The default image layout.
+            </value>
+            <exception cref="T:System.InvalidOperationException">Не указан ImageLayoutAttribute.</exception>
+        </member>
+        <member name="T:Saraff.Twain.DS.DataSourceServices">
+            <summary>
+            Controls the TWAIN session. Consumed by both Source Manager and Source. It is always
+            available, no matter what the current setting of DG_CONTROL / DAT_XFERGROUP.
+            </summary>
+            <seealso cref="T:Saraff.Twain.DS.IDataSource" />
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Saraff.Twain.DS.DataSourceServices"/> class from being created.
+            </summary>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices.ProcessRequest(Saraff.Twain.DS.TwIdentity,Saraff.Twain.DS.TwDG,Saraff.Twain.DS.TwDAT,Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            Every Source is required to have a single entry point called DS_Entry. DS_Entry is only called by the Source Manager.
+            </summary>
+            <param name="appId">This points to a TwIdentity structure, allocated by the application, that describes the
+            application making the call. One of the fields in this structure, called Id, is an arbitrary and
+            unique identifier assigned by the Source Manager to tag the application as a unique TWAIN
+            entity. The Source Manager maintains a copy of the application’s identity structure, so the
+            application must not modify that structure unless it first breaks its connection with the Source
+            Manager,then reconnects to cause the Source Manager to store the new, modified identity.</param>
+            <param name="dg">The Data Group of the operation triplet. Currently, only DG_CONTROL, DG_IMAGE, and DG_AUDIO are defined.</param>
+            <param name="dat">The Data Argument Type of the operation triplet.</param>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">The pData parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.</param>
+            <returns>TWAIN Return Codes.</returns>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceServices.Current">
+            <summary>
+            Gets the current instance of a Data Source.
+            </summary>
+            <value>
+            The current instance of IDataSource.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceServices.DsmEntries">
+            <summary>
+            Get current instance of DSM entry points.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceServices.Handlers">
+            <summary>
+            Get instance of current handler.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceServices.HandlerType">
+            <summary>
+            Get a type of handler.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceServices.ConditionCode">
+            <summary>
+            Get or set a c ondition code of last operation.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.DataSourceServices.MaxConnectionCount">
+            <summary>
+            Get the maximum number of connections.
+            </summary>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices._GetLocation">
+            <summary>
+            Get location of a data source.
+            </summary>
+            <returns>Path to a data source directory.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices._GetDSIdentity">
+            <summary>
+            Get the identity structure for the Source.
+            </summary>
+            <returns>Instance of TwIdentity.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices._IdentityControlProcessRequest(Saraff.Twain.DS.TwIdentity,Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            DG_CONTROL / DAT_IDENTITY / MSG_GET
+            This operation triplet is generated only by the Source Manager and is sent to the Source. It returns
+            the identity structure for the Source.
+            
+            DG_CONTROL / DAT_IDENTITY / MSG_OPENDS
+            Opens the Source for operation.
+            
+            DG_CONTROL / DAT_IDENTITY / MSG_CLOSEDS
+            Closes the Source so it can be unloaded from memory. The Source responds by doing its
+            shutdown and clean-up activities needed to ensure the heap will be “clean” after the Source is
+            unloaded.Under Windows, the Source will only be unloaded if the connection with the last
+            application accessing it is about to be broken.The Source will know this by its internal “connect
+            count” that should be maintained by any Source that supports multiple application connects.
+            </summary>
+            <param name="appId">This points to a TwIdentity structure.</param>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">The pData parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.</param>
+            <returns>TWAIN Return Codes.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices._StatusControlProcessRequest(Saraff.Twain.DS.TwIdentity,Saraff.Twain.DS.TwMSG,System.IntPtr)">
+            <summary>
+            DG_CONTROL / DAT_STATUS / MSG_GET
+            Returns the current Condition Code for the specified Source.
+            </summary>
+            <param name="appId">This points to a TwIdentity structure.</param>
+            <param name="msg">The Message of the operation triplet.</param>
+            <param name="data">The pData parameter is a pointer to the data (a variable or, more
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.</param>
+            <returns>TWAIN Return Codes.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices._EntryPointControlProcessRequest(Saraff.Twain.DS.TwIdentity,Saraff.Twain.DS.TwMSG,Saraff.Twain.DS.TwEntryPoint)">
+            <summary>
+            DG_CONTROL / DAT_ENTRYPOINT / MSG_SET
+            The TWAIN 2.0 Source Manager issues this command to Sources (that set DF_DS2) prior of any
+            other command sent by the Application.In most cases it will immediately precede the call to
+            DG_CONTROL / DAT_IDENTITY / MSG_OPEN.
+            TWAIN 1.x Sources must continue to find and load the Source Manager DSM_Entry on
+            their own.
+            </summary>
+            <param name="appId">This points to a TwIdentity structure.</param>
+            <param name="msg">The Message of the operation triplet.</param>
+            typically, a structure) that will be used according to the action specified by the operation
+            triplet.
+            <param name="entry"></param>
+            <returns>TWAIN Return Codes.</returns>
+        </member>
+        <member name="T:Saraff.Twain.DS.DataSourceServices._DsmEntry">
+            <summary>
+            Точки входа для работы с DSM.
+            </summary>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices._DsmEntry.#ctor(System.IntPtr)">
+            <summary>
+            Инициализирует новый экземпляр класса <see cref="T:Saraff.Twain.DS.DataSourceServices._DsmEntry"/>.
+            </summary>
+            <param name="ptr">Указатель на DSM_Entry.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices._DsmEntry.Create">
+            <summary>
+            Создает и возвращает новый экземпляр класса <see cref="T:Saraff.Twain.DS.DataSourceServices._DsmEntry"/>.
+            </summary>
+            <returns>Экземпляр класса <see cref="T:Saraff.Twain.DS.DataSourceServices._DsmEntry"/>.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices._DsmEntry.Create(System.IntPtr)">
+            <summary>
+            Создает и возвращает новый экземпляр класса <see cref="T:Saraff.Twain.DS.DataSourceServices._DsmEntry"/>.
+            </summary>
+            <param name="ptr">Указатель на DSM_Entry.</param>
+            <returns>Экземпляр класса <see cref="T:Saraff.Twain.DS.DataSourceServices._DsmEntry"/>.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices._DsmEntry.CreateDelegate``1(System.IntPtr)">
+            <summary>
+            Приводит указатель к требуемомы делегату.
+            </summary>
+            <typeparam name="T">Требуемый делегат.</typeparam>
+            <param name="ptr">Указатель на DSM_Entry.</param>
+            <returns>Делегат.</returns>
+        </member>
+        <member name="T:Saraff.Twain.DS.DataSourceServices.Memory">
+            <summary>
+            Точки входа для функций управления памятью.
+            </summary>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices.Memory.Alloc(System.Int32)">
+            <summary>
+            Выделяет блок памяти указанного размера.
+            </summary>
+            <param name="size">Размер блока памяти.</param>
+            <returns>Дескриптор памяти.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices.Memory.Free(System.IntPtr)">
+            <summary>
+            Освобождает память.
+            </summary>
+            <param name="handle">Дескриптор памяти.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices.Memory.Lock(System.IntPtr)">
+            <summary>
+            Выполняет блокировку памяти.
+            </summary>
+            <param name="handle">Дескриптор памяти.</param>
+            <returns>Указатель на блок памяти.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices.Memory.Unlock(System.IntPtr)">
+            <summary>
+            Выполняет разблокировку памяти.
+            </summary>
+            <param name="handle">Дескриптор памяти.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices.Memory.ZeroMemory(System.IntPtr,System.IntPtr)">
+            <summary>
+            Заполняет нулями указанный блок памяти.
+            </summary>
+            <param name="dest">Указатель на блок памяти.</param>
+            <param name="size">Размер блока памяти.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.DataSourceServices.Memory._SetEntryPoints(Saraff.Twain.DS.TwEntryPoint)">
+            <summary>
+            Устаначливает точки входа.
+            </summary>
+            <param name="entry">Точки входа.</param>
+        </member>
+        <member name="T:Saraff.Twain.DS.DataSourceServices._DsmCallback">
+            <summary>
+            The Source Manager entry point. Typically called by applications, with the
+            following exceptions where a Source calls the Source Manager to communicate with an
+            Application:
+            DG_CONTROL / DAT_NULL / MSG_XFERREADY
+            DG_CONTROL / DAT_NULL / MSG_CLOSEDSREQ
+            DG_CONTROL / DAT_NULL / MSG_CLOSEDSOK
+            DG_CONTROL / DAT_NULL / MSG_DEVICEEVENT
+            </summary>
+            <param name="origin">Source of message.</param>
+            <param name="dest">Destination of message.</param>
+            <param name="dg">Data group ID: DG_xxxx.</param>
+            <param name="dat">Data argument type: DAT_xxxx.</param>
+            <param name="msg">Message ID: MSG_xxxx.</param>
+            <param name="arg">Pointer to data.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Saraff.Twain.DS.SupportedGroupsAttribute">
+            <summary>
+            Define a Supported Groups for a Data Source.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="M:Saraff.Twain.DS.SupportedGroupsAttribute.#ctor(Saraff.Twain.DS.TwDG)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.SupportedGroupsAttribute"/> class.
+            </summary>
+            <param name="groups">The groups.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.SupportedGroupsAttribute.#ctor(Saraff.Twain.DS.TwDG,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.SupportedGroupsAttribute"/> class.
+            </summary>
+            <param name="groups">The groups.</param>
+            <param name="protocolVersion">The protocol version.</param>
+        </member>
+        <member name="P:Saraff.Twain.DS.SupportedGroupsAttribute.ProtocolVersion">
+            <summary>
+            Gets the protocol version.
+            </summary>
+            <value>
+            The protocol version.
+            </value>
+        </member>
+        <member name="P:Saraff.Twain.DS.SupportedGroupsAttribute.SupportedGroups">
+            <summary>
+            Gets the supported groups.
+            </summary>
+            <value>
+            The supported groups.
+            </value>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwDG">
+            <summary>
+            Data Groups.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDG.Control">
+            <summary>
+            Data pertaining to control.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDG.Image">
+            <summary>
+            Data pertaining to raster images.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDG.Audio">
+            <summary>
+            Data pertaining to audio.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDG.DSM2">
+            <summary>
+            added to the identity by the DSM.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDG.APP2">
+            <summary>
+            Set by the App to indicate it would prefer to use DSM2.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDG.DS2">
+            <summary>
+            Set by the DS to indicate it would prefer to use DSM2.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwDAT">
+            <summary>
+            Data codes.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwMSG">
+            <summary>
+            Messages.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.Null">
+            <summary>
+            Used in TW_EVENT structure.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.Get">
+            <summary>
+            Get one or more values.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.GetCurrent">
+            <summary>
+            Get current value.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.GetDefault">
+            <summary>
+            Get default (e.g. power up) value.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.GetFirst">
+            <summary>
+            Get first of a series of items, e.g. DSs.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.GetNext">
+            <summary>
+            Iterate through a series of items.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.Set">
+            <summary>
+            Set one or more values.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.Reset">
+            <summary>
+            Set current value to default value.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.QuerySupport">
+            <summary>
+            Get supported operations on the cap.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.CheckStatus">
+            <summary>
+            Get status information
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.OpenDSM">
+            <summary>
+            Open the DSM
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.CloseDSM">
+            <summary>
+            Close the DSM
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.OpenDS">
+            <summary>
+            Open a entry source
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.CloseDS">
+            <summary>
+            Close a entry source
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.UserSelect">
+            <summary>
+            Put up a dialog of all DS
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.DisableDS">
+            <summary>
+            Disable entry transfer in the DS
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.EnableDS">
+            <summary>
+            Enabled entry transfer in the DS
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMSG.EnableDSUIOnly">
+            <summary>
+            Enabled for saving DS state only.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwRC">
+            <summary>
+            Return Codes
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwCC">
+            <summary>
+            Condition Codes
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwOn">
+            <summary>
+            Generic Constants
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwOn.Array">
+            <summary>
+            Indicates TW_ARRAY container
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwOn.Enum">
+            <summary>
+            Indicates TW_ENUMERATION container
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwOn.One">
+            <summary>
+            Indicates TW_ONEVALUE container
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwOn.Range">
+            <summary>
+            Indicates TW_RANGE container
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwType">
+            <summary>
+            Data Types
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwTypeHelper">
+            <summary>
+            Вспомогательный класс для типов twain.
+            </summary>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwTypeHelper.TypeOf(Saraff.Twain.DS.TwType)">
+            <summary>
+            Возвращает соответствующий twain-типу управляемый тип.
+            </summary>
+            <param name="type">Код типа данный twain.</param>
+            <returns>Управляемый тип.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwTypeHelper.TypeOf(System.Type)">
+            <summary>
+            Возвращает соответствующий управляемому типу twain-тип.
+            </summary>
+            <param name="type">Управляемый тип.</param>
+            <returns>Код типа данный twain.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwTypeHelper.TypeOf(System.Object)">
+            <summary>
+            Возвращает соответствующий объекту twain-тип.
+            </summary>
+            <param name="obj">Объект.</param>
+            <returns>Код типа данный twain.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwTypeHelper.SizeOf(Saraff.Twain.DS.TwType)">
+            <summary>
+            Возвращает размер twain-типа в неуправляемом блоке памяти.
+            </summary>
+            <param name="type">Код типа данный twain.</param>
+            <returns>Размер в байтах.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwTypeHelper.CastToCommon(Saraff.Twain.DS.TwType,System.Object)">
+            <summary>
+            Приводит внутренние типы компонента к общим типам среды.
+            </summary>
+            <param name="type">Код twain-типа.</param>
+            <param name="value">Экземпляр объекта.</param>
+            <returns>Экземпляр объекта.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwTypeHelper.CastToTw(Saraff.Twain.DS.TwType,System.Object)">
+            <summary>
+            Приводит общие типы среды к внутренним типам компонента.
+            </summary>
+            <param name="type">Код twain-типа.</param>
+            <param name="value">Экземпляр объекта.</param>
+            <returns>Экземпляр объекта.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwTypeHelper.ValueToTw``1(Saraff.Twain.DS.TwType,``0)">
+            <summary>
+            Выполняет преобразование значения в экземпляр внутреннего типа компонента.
+            </summary>
+            <typeparam name="T">Тип значения.</typeparam>
+            <param name="type">Код twain-типа.</param>
+            <param name="value">Значение.</param>
+            <returns>Экземпляр объекта.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwTypeHelper.ValueFromTw``1(System.Object)">
+            <summary>
+            Выполняет преобразование экземпляра внутреннего типа компонента в значение.
+            </summary>
+            <typeparam name="T">Тип значения.</typeparam>
+            <param name="value">Экземпляр объекта.</param>
+            <returns>Значение.</returns>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwCap">
+            <summary>
+            Capability Constants
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwQC">
+            <summary>
+            Bit patterns: for query the operation that are supported by the entry source on a capability
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwLanguage">
+            <summary>
+            Language Constants
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwCountry">
+            <summary>
+            Country Constantsz
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwUnits">
+            <summary>
+            Unit of measure
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwPixelType">
+            <summary>
+            Pixel types
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwPixelType.BW">
+            <summary>
+            Black and white
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwCompression">
+            <summary>
+            Compression values
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwCompression.Group31D">
+            <summary>
+            Follows CCITT spec (no End Of Line)
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwCompression.Group31Deol">
+            <summary>
+            Follows CCITT spec (has End Of Line)
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwCompression.Group32D">
+            <summary>
+            Follows CCITT spec (use cap for K Factor)
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwCompression.Group4">
+            <summary>
+            Follows CCITT spec
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwCompression.Jpeg">
+            <summary>
+            Use capability for more info
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwCompression.Lzw">
+            <summary>
+            Must license from Unisys and IBM to use
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwCompression.Jbig">
+            <summary>
+            For Bitonal images  -- Added 1.7 KHL
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwEI">
+            <summary>
+            Extended Image Info Attributes.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwSX">
+            <summary>
+            ICAP_XFERMECH values (SX_ means Setup XFer)
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwMF">
+            <summary>
+            Flags used in TW_MEMORY structure.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwSS">
+            <summary>
+            ICAP_SUPPORTEDSIZES values (SS_ means Supported Sizes).
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwFF">
+            <summary>
+            ICAP_IMAGEFILEFORMAT values (FF_means File Format).
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFF.Tiff">
+            <summary>
+            Tagged Image File Format.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFF.Pict">
+            <summary>
+            Macintosh PICT.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFF.Bmp">
+            <summary>
+            Windows Bitmap.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFF.Xbm">
+            <summary>
+            X-Windows Bitmap.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFF.Jfif">
+            <summary>
+            Jpeg File Interchange Format.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFF.Fpx">
+            <summary>
+            Flash Pix.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFF.TiffMulti">
+            <summary>
+            Multi-page tiff file.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFF.Pdf">
+            <summary>
+            1.91 NB: this is not PDF/A
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFF.Jp2">
+            <summary>
+            1.91
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFF.Jpx">
+            <summary>
+            1.91
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFF.Dejavu">
+            <summary>
+            1.91
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFF.PdfA">
+            <summary>
+            2.0 Adobe PDF/A, Version 1.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFF.PdfA2">
+            <summary>
+            2.1 Adobe PDF/A, Version.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwPA">
+            <summary>
+            Palette types for TW_PALETTE8.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwDE">
+            <summary>
+            CAP_DEVICEEVENT values (DE_ means device event).
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwDX">
+            <summary>
+            ICAP_DUPLEX values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwBP">
+            <summary>
+            ICAP_AUTODISCARDBLANKPAGES values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwAS">
+            <summary>
+            ICAP_AUTOSIZE values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwFR">
+            <summary>
+            ICAP_FLIPROTATION values (FR_ means flip rotation).
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwIM">
+            <summary>
+            ICAP_IMAGEMERGE values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwCS">
+            <summary>
+            CAP_CAMERASIDE and TWEI_PAGESIDE values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwCB">
+            <summary>
+            CAP_CLEARBUFFERS values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwBT">
+            <summary>
+            ICAP_SUPPORTEDBARCODETYPES and TWEI_BARCODETYPE values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwBD">
+            <summary>
+            ICAP_BARCODESEARCHMODE values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwFT">
+            <summary>
+            ICAP_FILTER values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwIC">
+            <summary>
+            ICAP_ICCPROFILE values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwPC">
+            <summary>
+            ICAP_PLANARCHUNKY values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwBO">
+            <summary>
+            ICAP_BITORDER values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwJQ">
+            <summary>
+            ICAP_JPEGQUALITY values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwJS">
+            <summary>
+            ICAP_JPEGSUBSAMPLING values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwPF">
+            <summary>
+            ICAP_PIXELFLAVOR values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwFL">
+            <summary>
+            ICAP_FLASHUSED2 values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwIF">
+            <summary>
+            ICAP_IMAGEFILTER values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwLP">
+            <summary>
+            ICAP_LIGHTPATH values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwLS">
+            <summary>
+            ICAP_LIGHTSOURCE values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwNF">
+            <summary>
+            ICAP_NOISEFILTER values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwOV">
+            <summary>
+            ICAP_OVERSCAN values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwDF">
+            <summary>
+            CAP_DOUBLEFEEDDETECTION.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwUS">
+            <summary>
+            CAP_DOUBLEFEEDDETECTIONSENSITIVITY.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwDP">
+            <summary>
+            CAP_DOUBLEFEEDDETECTIONRESPONSE.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwPR">
+            <summary>
+            CAP_PRINTER values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwPM">
+            <summary>
+            CAP_PRINTERMODE values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwOR">
+            <summary>
+            ICAP_ORIENTATION values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwBR">
+            <summary>
+            ICAP_BITDEPTHREDUCTION values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwSG">
+            <summary>
+            CAP_SEGMENTED values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwFA">
+            <summary>
+            CAP_FEEDERALIGNMENT values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwFO">
+            <summary>
+            CAP_FEEDERORDER values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwFP">
+            <summary>
+            CAP_FEEDERPOCKET values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwPH">
+            <summary>
+            CAP_PAPERHANDLING values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwFE">
+            <summary>
+            ICAP_FEEDERTYPE values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwPch">
+            <summary>
+            TWEI_PATCHCODE values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwBM1">
+            <summary>
+            CAP_BATTERYMINUTES values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwBM2">
+            <summary>
+            CAP_BATTERYPERCENTAGE values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwPS">
+            <summary>
+            CAP_POWERSUPPLY values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwJC">
+            <summary>
+            CAP_JOBCONTROL values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwCI">
+            <summary>
+            CAP_INDICATORSMODE values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwAL">
+            <summary>
+            CAP_ALARMS values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwStr32">
+            <summary>
+            Строка фиксированной длинны 32 символа.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwStr64">
+            <summary>
+            Строка фиксированной длинны 64 символа.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwStr128">
+            <summary>
+            Строка фиксированной длинны 128 символов.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwStr255">
+            <summary>
+            Строка фиксированной длинны 255 символов.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwUni512">
+            <summary>
+            Строка юникода фиксированной длинны 512 символов.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwStr1024">
+            <summary>
+            Строка фиксированной длинны 1024 символов.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwBool">
+            <summary>
+            Boolean value.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwFix32">
+            <summary>
+            Fixed point structure type.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFix32.Whole">
+            <summary>
+            Целая часть.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFix32.Frac">
+            <summary>
+            Дробная часть.
+            </summary>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwFix32.ToFloat">
+            <summary>
+            Приводит тип к числу с плавающей запятой.
+            </summary>
+            <returns>Число с плавающей точкой.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwFix32.op_Implicit(System.Single)~Saraff.Twain.DS.TwFix32">
+            <summary>
+            Создает экземпляр TwFix32 из числа с плавающей точкой.
+            </summary>
+            <param name="f">Число с плавающей точкой.</param>
+            <returns>Экземпляр TwFix32.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwFix32.op_Explicit(System.UInt32)~Saraff.Twain.DS.TwFix32">
+            <summary>
+            Создает экземпляр TwFix32 из целого числа.
+            </summary>
+            <param name="f">Целое число.</param>
+            <returns>Экземпляр TwFix32.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwFix32.op_Implicit(Saraff.Twain.DS.TwFix32)~System.Single">
+            <summary>
+            Приводит тип к числу с плавающей запятой.
+            </summary>
+            <param name="value">Экземпляр TwFix32.</param>
+            <returns>Число с плавающей точкой.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwFix32.op_Explicit(Saraff.Twain.DS.TwFix32)~System.UInt32">
+            <summary>
+            Приводит тип к целому числу.
+            </summary>
+            <param name="value">Экземпляр TwFix32.</param>
+            <returns>Целое число.</returns>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwFrame">
+            <summary>
+            Defines a frame rectangle in ICAP_UNITS coordinates.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFrame.Left">
+            <summary>
+            Gets or sets the x-coordinate of the left edge.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFrame.Top">
+            <summary>
+            Gets or sets the y-coordinate of the top edge.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFrame.Right">
+            <summary>
+            Gets or sets the x-coordinate that is the sum of TwFrame.Left and width of image.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwFrame.Bottom">
+            <summary>
+            Gets or sets the y-coordinate that is the sum of TwFrame.Top and length of image.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwIdentity">
+            <summary>
+            Identifies the program/library/code resource.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.TwIdentity.Id">
+            <summary>
+            Unique number.  In Windows, appId hWnd.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.TwIdentity.Version">
+            <summary>
+            Identifies the piece of code
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.TwIdentity.ProtocolMajor">
+            <summary>
+            Application and DS must set to TWON_PROTOCOLMAJOR
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.TwIdentity.ProtocolMinor">
+            <summary>
+            Application and DS must set to TWON_PROTOCOLMINOR
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.TwIdentity.SupportedGroups">
+            <summary>
+            Bit field OR combination of DG_ constants
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.TwIdentity.Manufacturer">
+            <summary>
+            Manufacturer name, e.g. "Hewlett-Packard"
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.TwIdentity.ProductFamily">
+            <summary>
+            Product family name, e.g. "ScanJet"
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.TwIdentity.ProductName">
+            <summary>
+            Product name, e.g. "ScanJet Plus"
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwVersion">
+            <summary>
+            Describes version of software currently running.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.TwVersion.MajorNum">
+            <summary>
+            Major revision number of the software.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.TwVersion.MinorNum">
+            <summary>
+            Incremental revision number of the software.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.TwVersion.Language">
+            <summary>
+            e.g. TWLG_SWISSFRENCH
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.TwVersion.Country">
+            <summary>
+            e.g. TWCY_SWITZERLAND
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.TwVersion.Info">
+            <summary>
+            e.g. "1.0b3 Beta release"
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwUserInterface">
+            <summary>
+            Coordinates UI between appId and entry source.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwUserInterface.ShowUI">
+            <summary>
+            TRUE if DS should bring up its UI
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwUserInterface.ModalUI">
+            <summary>
+            For Mac only - true if the DS's UI is modal
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwUserInterface.ParentHand">
+            <summary>
+            For windows only - Application window handle
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwStatus">
+            <summary>
+            Application gets detailed status info from a entry source with this.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwStatus.ConditionCode">
+            <summary>
+            Any TwCC constant
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwStatus.Reserved">
+            <summary>
+            Future expansion space
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwEvent">
+            <summary>
+            For passing events down from the appId to the DS.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwEvent.EventPtr">
+            <summary>
+            Windows pMSG or Mac pEvent.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwEvent.Message">
+            <summary>
+            TwMSG from entry source, e.g. TwMSG.XFerReady
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwImageInfo">
+            <summary>
+            Application gets detailed image info from DS with this.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageInfo.XResolution">
+            <summary>
+            Resolution in the horizontal
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageInfo.YResolution">
+            <summary>
+            Resolution in the vertical
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageInfo.ImageWidth">
+            <summary>
+            Columns in the image, -1 if unknown by DS
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageInfo.ImageLength">
+            <summary>
+            Rows in the image, -1 if unknown by DS
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageInfo.SamplesPerPixel">
+            <summary>
+            Number of samples per pixel, 3 for RGB
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageInfo.BitsPerSample">
+            <summary>
+            Number of bits for each sample
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageInfo.BitsPerPixel">
+            <summary>
+            Number of bits for each padded pixel
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageInfo.Planar">
+            <summary>
+            True if Planar, False if chunky
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageInfo.PixelType">
+            <summary>
+            How to interp entry; photo interp
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageInfo.Compression">
+            <summary>
+            How the entry is compressed
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwImageLayout">
+            <summary>
+            Provides image layout information in current units.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageLayout.Frame">
+            <summary>
+            Frame coords within larger document.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageLayout.DocumentNumber">
+            <summary>
+            Номер документа.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageLayout.PageNumber">
+            <summary>
+            Номер страницы.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageLayout.FrameNumber">
+            <summary>
+            Номер кадра.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwPendingXfers">
+            <summary>
+            Used with TwMSG.EndXfer to indicate additional entry.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwCapability">
+            <summary>
+            Used by appId to get/set capability from/in a entry source.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwCapability.Cap">
+            <summary>
+            Id of capability to set or get, e.g. TwCap.Brightness
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwCapability.ConType">
+            <summary>
+            TwOn.One, TwOn.Range, TwOn.Array or TwOn.Enum
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwCapability.Handle">
+            <summary>
+            Handle to container of type Dat
+            </summary>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwCapability.#ctor(Saraff.Twain.DS.TwCap)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.TwCapability"/> class.
+            </summary>
+            <param name="cap">The cap.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwCapability.#ctor(Saraff.Twain.DS.TwCap,System.UInt32,Saraff.Twain.DS.TwType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.TwCapability"/> class.
+            </summary>
+            <param name="cap">The cap.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwCapability.#ctor(Saraff.Twain.DS.TwCap,System.String,Saraff.Twain.DS.TwType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.TwCapability"/> class.
+            </summary>
+            <param name="cap">The cap.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwCapability.#ctor(Saraff.Twain.DS.TwCap,Saraff.Twain.DS.TwRange)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.TwCapability"/> class.
+            </summary>
+            <param name="cap">The cap.</param>
+            <param name="range">The range.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwCapability.#ctor(Saraff.Twain.DS.TwCap,Saraff.Twain.DS.TwArray,System.Object[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.TwCapability"/> class.
+            </summary>
+            <param name="cap">The cap.</param>
+            <param name="array">The array.</param>
+            <param name="arrayValue">The array value.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwCapability.#ctor(Saraff.Twain.DS.TwCap,Saraff.Twain.DS.TwEnumeration,System.Object[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Saraff.Twain.DS.TwCapability"/> class.
+            </summary>
+            <param name="cap">The cap.</param>
+            <param name="enumeration">The enumeration.</param>
+            <param name="enumerationValue">The enumeration value.</param>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwCapability.GetValue">
+            <summary>
+            Возвращает результат для указаной возможности.
+            </summary>
+            <returns>Экземпляр TwArray, TwEnumeration, _TwRange или _TwOneValue.</returns>
+        </member>
+        <member name="M:Saraff.Twain.DS.TwCapability.Dispose">
+            <summary>
+            Performs appId-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwArray">
+            <summary>
+            Container for array of values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwEnumeration">
+            <summary>
+            Container for a collection of values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwOneValue">
+            <summary>
+            Container for one value.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwOneCustumValue">
+            <summary>
+            Container for one custom value.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwRange">
+            <summary>
+            Container for a range of values.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwSetupMemXfer">
+            <summary>
+            Sets up DS to appId entry transfer via a memory buffer.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwSetupMemXfer.MinBufSize">
+            <summary>
+            Minimum buffer size in bytes
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwSetupMemXfer.MaxBufSize">
+            <summary>
+            Maximum buffer size in bytes
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwSetupMemXfer.Preferred">
+            <summary>
+            Preferred buffer size in bytes
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwImageMemXfer">
+            <summary>
+            Used to pass image entry (e.g. in strips) from DS to appId.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageMemXfer.Compression">
+            <summary>
+            How the entry is compressed.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageMemXfer.BytesPerRow">
+            <summary>
+            Number of bytes in a row of entry.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageMemXfer.Columns">
+            <summary>
+            How many columns.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageMemXfer.Rows">
+            <summary>
+            How many rows.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageMemXfer.XOffset">
+            <summary>
+            How far from the side of the image.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageMemXfer.YOffset">
+            <summary>
+            How far from the top of the image.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageMemXfer.BytesWritten">
+            <summary>
+            How many bytes written in Memory.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwImageMemXfer.Memory">
+            <summary>
+            Mem struct used to pass actual image entry.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwMemory">
+            <summary>
+            Used to manage memory buffers.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMemory.Flags">
+            <summary>
+            Any combination of the TWMF_ constants.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMemory.Length">
+            <summary>
+            Number of bytes stored in buffer TheMem.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwMemory.TheMem">
+            <summary>
+            Pointer or handle to the allocated memory buffer.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwSetupFileXfer">
+            <summary>
+            Sets up DS to appId entry transfer via a file.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwSetupFileXfer.FileName">
+            <summary>
+            File to contain entry.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwSetupFileXfer.Format">
+            <summary>
+            A TWFF_xxxx constant.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwSetupFileXfer.VrefNum">
+            <summary>
+            Used for Macintosh only.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwPalette8">
+            <summary>
+            DAT_PALETTE8. Color palette when TWPT_PALETTE pixels xfer'd in mem buf.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwPalette8.NumColors">
+            <summary>
+            Number of colors in the color table.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwPalette8.PaletteType">
+            <summary>
+            TWPA_xxxx, specifies type of palette.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwPalette8.Colors">
+            <summary>
+            Array of palette values starts here.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwElement8">
+            <summary>
+            No DAT needed.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwElement8.Index">
+            <summary>
+            Value used to index into the color table.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwElement8.Channel1">
+            <summary>
+            First  tri-stimulus value (e.g Red).
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwElement8.Channel2">
+            <summary>
+            Second tri-stimulus value (e.g Green).
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwElement8.Channel3">
+            <summary>
+            Third  tri-stimulus value (e.g Blue).
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwDeviceEvent">
+            <summary>
+            DAT_DEVICEEVENT, information about events.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDeviceEvent.Event">
+            <summary>
+            One of the TWDE_xxxx values.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDeviceEvent.DeviceName">
+            <summary>
+            The name of the device that generated the event.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDeviceEvent.BatteryMinutes">
+            <summary>
+            Battery Minutes Remaining.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDeviceEvent.BatteryPercentAge">
+            <summary>
+            Battery Percentage Remaining.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDeviceEvent.PowerSupply">
+            <summary>
+            Power Supply.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDeviceEvent.XResolution">
+            <summary>
+            Resolution.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDeviceEvent.YResolution">
+            <summary>
+            Resolution.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDeviceEvent.FlashUsed2">
+            <summary>
+            Flash Used2.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDeviceEvent.AutomaticCapture">
+            <summary>
+            Automatic Capture.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDeviceEvent.TimeBeforeFirstCapture">
+            <summary>
+            Automatic Capture.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwDeviceEvent.TimeBetweenCaptures">
+            <summary>
+            Automatic Capture.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwCallback">
+            <summary>
+            Used to register callbacks.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwCallback2">
+            <summary>
+            Used to register callbacks.
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.__TwArray">
+            <summary>
+            Container for array of values.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Saraff.Twain.DS.__TwEnumeration">
+            <summary>
+            Container for a collection of values.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Saraff.Twain.DS.TwEntryPoint">
+            <summary>
+            DAT_ENTRYPOINT. returns essential entry points.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwEntryPoint.Size">
+            <summary>
+            Size of the structure in bytes. 
+            The appId must set this before calling MSG_GET. 
+            The Source should examine this when processing a MSG_SET.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwEntryPoint.DSM_Entry">
+            <summary>
+            A pointer to the DSM_Entry function. 
+            TWAIN 2.0 Sources must use this value instead of getting it themselves.
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwEntryPoint.MemoryAllocate">
+            <summary>
+            A pointer to the memory allocation function, taking the form TW_HANDLE PASCAL DSM_MemAllocate (TW_UINT32).
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwEntryPoint.MemoryFree">
+            <summary>
+            A pointer to the memory free function, taking the form void PASCAL DSM_MemAllocate (TW_HANDLE).
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwEntryPoint.MemoryLock">
+            <summary>
+            A pointer to the memory lock function, taking the form TW_MEMREF PASCAL DSM_MemAllocate (TW_HANDLE).
+            </summary>
+        </member>
+        <member name="F:Saraff.Twain.DS.TwEntryPoint.MemoryUnlock">
+            <summary>
+            A pointer to the memory unlock function, taking the form void PASCAL DSM_MemUnlock (TW_HANDLE).
+            </summary>
+        </member>
+        <member name="T:Saraff.Twain.DS.XferEnvironment">
+            <summary>
+            Provide information about current transfer environment.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.XferEnvironment.MemXferBufferSize">
+            <summary>
+            Get or set preferred buffer size for a memory transfer mode.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.XferEnvironment.MinMemXferBufferSize">
+            <summary>
+            Get minimum buffer size for a memory transfer mode.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.XferEnvironment.MaxMemXferBufferSize">
+            <summary>
+            Get maximum buffer size for a memory transfer mode.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.XferEnvironment.FileXferName">
+            <summary>
+            Get or set file name for a file transfer mode.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.XferEnvironment.FileXferFormat">
+            <summary>
+            Get or set image file format for a file transfer mode.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.XferEnvironment.DefaultFileXferName">
+            <summary>
+            Get default file name for a file transfer mode.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.XferEnvironment.DefaultFileXferFormat">
+            <summary>
+            Get default image file format for a file transfer mode.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.XferEnvironment.PendingXfers">
+            <summary>
+            Get the number of transfers the Source is ready to supply to the application, upon demand.
+            </summary>
+        </member>
+        <member name="P:Saraff.Twain.DS.XferEnvironment.ImageInfo">
+            <summary>
+            Get or set information about the current image that has just been transferred.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -14,4 +14,6 @@
 
     <viewmodel:RentalDetailsViewViewModel x:Key="RentalDetailsViewVM"></viewmodel:RentalDetailsViewViewModel>
 
+    <viewmodel:PrintsViewModel x:Key="PrintsVM"></viewmodel:PrintsViewModel>
+
 </ResourceDictionary>

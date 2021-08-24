@@ -11,7 +11,8 @@ namespace matsukifudousan.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Windows.Media.Imaging;
+
     public partial class Image
     {
         public int ImageId { get; set; }

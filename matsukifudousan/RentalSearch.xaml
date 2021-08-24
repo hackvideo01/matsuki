@@ -69,6 +69,7 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
+
                 </ScrollViewer>
             </materialDesign:Card>
         </Grid>
